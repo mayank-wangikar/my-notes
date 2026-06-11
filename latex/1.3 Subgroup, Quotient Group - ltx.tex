@@ -81,28 +81,20 @@ $O$ is open if and only if $\pi^{-1}(O)$ is open in $G$
 \end{remark}
 
 % --- Page 4 ---
-which ensures $\pi$ is a continuous map, moreover
-a quotient map where $\pi$ is surjective by construct-
-ion.
+which ensures $\pi$ is a continuous map, moreover a quotient map where $\pi$ is surjective by construction.
 
 \begin{lemma}
 $G/H$ is a $T_1$-space, and $\pi$ is open.
 \end{lemma}
 
 \begin{proof}
-Since $H$ is closed then $\alpha H$ is closed by
-homeomorphism. Observe $G - \alpha H$ is open in $G$.
-Let $\tilde{\alpha} = \alpha H \in G/H$. Observe $\pi^{-1}(G/H - \tilde{\alpha})
-= G - \alpha H$. Hence $\tilde{\alpha}$ is closed, $G/H$ is $T_1$.
-We want to show $\pi$ is an open map.
-Let $O$ be an open map in $G/H$ then
-$\pi(O)$ is open $G/H$ iff $\pi^{-1}(\pi(O))$ is
-open in $G$. Now $OH = \pi^{-1}(\pi(O))$ and
-$OH = \bigcup Oh$. Hence $OH$ is open. So
+Since $H$ is closed then $\alpha H$ is closed by homeomorphism. Observe $G - \alpha H$ is open in $G$. Let $\tilde{x} = \alpha H \in G/H$. Observe $\pi^{-1}(G/H - \tilde{x}) = G - \alpha H$. Hence $\tilde{x}$ is closed, $G/H$ is $T_1$.
+
+We want to show $\pi$ is an open map. Let $O$ be an open map in $G/H$ then $\pi(O)$ is open $G/H$ iff $\pi^{-1}(\pi(O))$ is open in $G$. Now $OH = \pi^{-1}(\pi(O))$ and $OH = \bigcup Oh$. Hence $OH$ is open. So
 \end{proof}
 
 % --- Page 5 ---
-$\pi^{-1}(\pi(O))$ is open which implies $\pi(CO)$ is open.
+$\pi^{-1}(C(\pi(O)))$ is open which implies $\pi(CO)$ is open.
 
 \begin{lemma}
 $G/H$ is a $T_2$ space.
@@ -113,7 +105,7 @@ Consider $xH \neq yH$ in $G/H$.
 
 Now $x \in xH$ and $x \in G \setminus yH$ which is open as $H$ is closed and $yH$ is closed. Now, let $V$ be a nbhd of $x$ st $x \in V \alpha \subset G \setminus yH$.
 
-Observe $V \alpha \cap yH = \emptyset$ implies $V \alpha H \cap yH = \emptyset$ otherwise $v h_1 = g h_2$ and $v \alpha = g h_2 h_1^{-1}$ implying $V \alpha \cap yH \neq \emptyset$. Now, we can find a nbhd of $V_1$ st $V_1^{-1} V_1 \subset V$ therefore $V_1^{-1} V_1 \alpha H \cap yH = \emptyset$ this implies $V_1 \alpha H \cap V_1 yH = \emptyset$, which is $\pi(V_1 \alpha) \cap \pi(V_1 y) = \emptyset$ and by previous lemma $\pi(V_1 \alpha)$ and $\pi(V_1 y)$ are open sets and $xH \in \pi(V_1 \alpha)$ and $yH \in \pi(V_1 y)$. Hence
+Observe $V \alpha \cap yH = \emptyset$ implies $V \alpha H \cap yH = \emptyset$ otherwise $v h_1 = g h_2$ and $v \alpha = g h_2 h_1^{-1}$ implying $V \alpha \cap yH \neq \emptyset$. Now, we can find a nbhd of $V_1$ st $V_1^{-1} V_1 \subseteq V$ therefore $V_1^{-1} V_1 \alpha H \cap yH = \emptyset$ this implies $V_1 \alpha H \cap V_1 yH = \emptyset$, which is $\pi(V_1 \alpha) \cap \pi(V_1 y) = \emptyset$ and by previous lemma $\pi(V_1 \alpha)$ and $\pi(V_1 y)$ are open sets and $xH \in \pi(V_1 \alpha)$ and $yH \in \pi(V_1 y)$. Hence
 \end{proof}
 
 % --- Page 6 ---
@@ -128,13 +120,13 @@ If $G$ is a topological group, $H$ is normal subgroup, the quotient topology equ
 \end{lemma}
 
 \begin{proof}
-We want to show $\chi_1 : G \backslash H \times G \backslash H \rightarrow G \backslash H$
+We want to show $\chi_1: G \backslash H \times G \backslash H \rightarrow G \backslash H$
 \[
 (x_1, y_1) \mapsto x_1 y_1^{-1}
 \]
 is continuous.
 
-And $\chi : G \times G \rightarrow G$
+And $\chi: G \times G \rightarrow G$
 \[
 (x, y) \mapsto xy^{-1}
 \]
@@ -145,7 +137,7 @@ is continuous
 \[
 \begin{array}{ccc}
 G \times G & \xrightarrow{\pi \times \pi} & G \backslash H \times G \backslash H \\
-\downarrow \pi & & \downarrow \psi_1 \\
+\pi \downarrow & & \downarrow \psi_1 \\
 G & \xrightarrow{\psi} & G \backslash H
 \end{array}
 \]
@@ -154,7 +146,7 @@ Observe $\psi_1 (\pi \times \pi) = \psi \pi$ and $\pi, \psi$ are continuous. Hen
 
 Let $O_1$ be an open subset of $G/H$ then
 
-$\psi_1 (\pi \times \pi)^{-1}(O_1)$ is open. As $\pi \times \pi$ is an open map, $\pi \times \pi (\pi \times \pi)^{-1} \psi_1^{-1}(O_1)$ is open. Hence $\psi_1^{-1}(O_1)$ is open.
+$\psi_1 (\pi \times \pi)^{-1} (O_1)$ is open. As $\pi \times \pi$ is an open map, $\pi \times \pi (\pi \times \pi)^{-1} \psi_1^{-1} (O_1)$ is open. Hence $\psi_1^{-1} (O_1)$ is open.
 
 \[
 \square
@@ -175,7 +167,9 @@ Let $G$ be a topological group, and $H$ be a subgroup.
 
 (b) A closed subset of a locally cpt set is locally cpt.
 
-Let $S$ be locally cpt, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \cap S$, there exists a nbhd of $p$ in $S$ $U_p$ st. $U_p$ is cpt. Observe for $p \in T$ there exists an open set $T \cap U_p$ in $T$ such that $T \cap U_p = T \cap \overline{U_p}$ is cpt as $T \cap \overline{U_p}$ is closed subset of $U_p$ which is cpt.
+Let $S$ be locally cpt, $T = \overline{S}$ and $T \subseteq S$.
+
+For $p \in T \cap S$, there exists a nbhd of $p$ in $S$ $U_p$ st. $U_p$ is cpt. Observe for $p \in T$ there exists an open set $T \cap U_p$ in $T$ such that $T \cap U_p = \overline{T \cap U_p}$ is cpt as $T \cap U_p$ is closed subset of $U_p$ which is cpt.
 
 Hence $H$ is locally cpt.
 
@@ -190,26 +184,27 @@ $U = \pi^{-1}(U_{i})$, and let $x \in G$ st. $\pi(x) = q_{i}$.
 As $G$ is locally cpt we get a nbd of $x$ $\overline{O}$ st.
 $\overline{O}$ is cpt and $\overline{O} \subseteq U$ by proposition given
 below. Then we have $\pi(\overline{O}) \subseteq \pi(U) = U_{i}$.
+
 If $O_{i} = \pi(O)$ a nbd of $q_{i}$. And $\pi(\overline{O})$
 is a continuous image of cpt set hence we get
 $\pi(\overline{O})$ is cpt. Since $G/H$ is $T_{2}$-space
 $\pi(\overline{O})$ is closed which implies
 
 $O \subseteq \overline{O} \Rightarrow O_{i} \subseteq \pi(\overline{O})$ and
-$\overline{O_{i}} \subseteq \pi(\overline{O}) = \pi(\overline{O})$ which is cpt,
-so is $\overline{O_{i}}$. Thus $O_{i}$ is a nbd of $q_{i}$ such that
-$\overline{O_{i}}$ is cpt. It follows $G/H$ is locally cpt.
+$\overline{O}_{i} \subseteq \pi(\overline{O}) = \pi(\overline{O})$ which is cpt,
+so is $\overline{O}_{i}$. Thus $O_{i}$ is a nbd of $q_{i}$ such that
+$\overline{O}_{i}$ is cpt. It follows $G/H$ is locally cpt.
 
 Corollary
 
 If $G$ is locally cpt then $G/H$ is normal or $T_{4}$.
 
 % --- Page 10 ---
-\begin{proposition}
-For any topological group $G$, let $U$ be a nbhd of $e$, there exists a nbhd of $e$ $V$ st. $V \subseteq U$.
+\begin{Proposition}
+For any topological group $G$, let $U$ be a nbd of $e$, there exists a nbd of $e$ $V$ st. $V \subseteq U$.
 \begin{proof}
-By property 5) and 6) we know that for every nbhd of $e$ $U$ we have a symmetric nbhd of $e$ st. $V^2 \subseteq U$. Now $x \in \overline{V} = \bigcap_{w \in V} wV$ where $V^2$ is set of all nbhd of $e$, this implies $x \in \overline{V} \subseteq V^2 \subseteq U$.
+By property 5) and 6) we know that for every nbd of $e$ $U$ we have a symmetric nbd of $e$ st. $V^2 \subseteq U$. Now $x \in \overline{V} = \bigcap_{w \in V} wV$ where $V^2$ is set of all nbds of $e$, this implies $x \in \overline{V} \subseteq V^2 \subseteq U$.
 \end{proof}
-\end{proposition}
+\end{Proposition}
 
 \end{document}
