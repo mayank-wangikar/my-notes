@@ -1,0 +1,122 @@
+name: Convert Notes to LaTeX
+
+on:
+  push:
+    paths:
+      - 'handwritten/**/*.pdf'
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y poppler-utils
+          pip install pdf2image pillow requests
+
+      - name: Convert PDFs to LaTeX
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os, base64, requests, pathlib, time
+          from io import BytesIO
+          from pdf2image import convert_from_path
+
+          OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+          MODEL = "google/gemma-4-31b-it:free"
+          API_KEY = os.environ["OPENROUTER_API_KEY"]
+
+          SYSTEM_PROMPT = """You are a LaTeX transcription tool. Convert handwritten content to LaTeX body content only.
+          STRICT RULES:
+          - Output LaTeX body content ONLY. No documentclass, usepackage, begin/end document.
+          - Transcribe ONLY what is visibly handwritten. Add nothing of your own.
+          - For definitions use: \\begin{definition} ... \\end{definition}
+          - For theorems use: \\begin{theorem} ... \\end{theorem}
+          - For lemmas use: \\begin{lemma} ... \\end{lemma}
+          - For remarks use: \\begin{remark} ... \\end{remark}
+          - For proofs use: \\begin{proof} ... \\end{proof}
+          - For inline math use $...$ and display math use \\[...\\]
+          - If illegible write: % illegible
+          - Output LaTeX only. No explanations, no markdown, no code fences."""
+
+          PREAMBLE = r"""\documentclass[11pt]{article}
+          \usepackage{amsmath, amssymb, amsthm}
+          \usepackage[margin=1.2in]{geometry}
+          \usepackage{hyperref}
+          \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+          \theoremstyle{definition}
+          \newtheorem{definition}{Definition}[section]
+          \newtheorem{theorem}{Theorem}[section]
+          \newtheorem{lemma}{Lemma}[section]
+          \newtheorem{remark}{Remark}[section]
+          \newtheorem{example}{Example}[section]
+          \newtheorem{corollary}{Corollary}[section]
+          \begin{document}"""
+
+          import re
+          def clean_latex(text):
+              junk = [r"Here is.*?:\n?", r"```latex\n?", r"```\n?",
+                      r"\\documentclass.*?\n", r"\\usepackage.*?\n",
+                      r"\\begin\{document\}", r"\\end\{document\}"]
+              for j in junk:
+                  text = re.sub(j, "", text, flags=re.IGNORECASE|re.DOTALL)
+              return text.strip()
+
+          def image_to_base64(img):
+              buf = BytesIO()
+              img.save(buf, format="PNG")
+              return base64.b64encode(buf.getvalue()).decode()
+
+          def call_api(b64):
+              headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+              payload = {"model": MODEL, "messages": [{"role": "user", "content": [
+                  {"type": "text", "text": SYSTEM_PROMPT},
+                  {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}}
+              ]}]}
+              for attempt in range(5):
+                  r = requests.post(OPENROUTER_URL, headers=headers, json=payload, timeout=60)
+                  if r.status_code == 429:
+                      wait = 30 * (attempt + 1)
+                      print(f"Rate limited, waiting {wait}s...")
+                      time.sleep(wait)
+                      continue
+                  r.raise_for_status()
+                  return r.json()["choices"][0]["message"]["content"]
+
+          for pdf_path in pathlib.Path("handwritten").rglob("*.pdf"):
+              print(f"Converting: {pdf_path}")
+              rel = pdf_path.relative_to("handwritten")
+              out_path = pathlib.Path("latex") / rel.with_suffix(".tex")
+              out_path.parent.mkdir(parents=True, exist_ok=True)
+
+              pages = convert_from_path(str(pdf_path), dpi=200)
+              all_latex = []
+              for i, page in enumerate(pages):
+                  print(f"  Page {i+1}/{len(pages)}...")
+                  latex = call_api(image_to_base64(page))
+                  all_latex.append(f"% --- Page {i+1} ---\n" + clean_latex(latex))
+                  time.sleep(3)
+
+              title = pdf_path.stem
+              title_block = (f"\\begin{{center}}\n{{\\Large\\textbf{{{title}}}}}\\\\\n"
+                             f"\\vspace{{0.3cm}}{{\\normalsize\\today}}\n\\end{{center}}\n\\vspace{{0.5cm}}\n")
+              full_doc = PREAMBLE + "\n\n" + title_block + "\n\n" + "\n\n".join(all_latex) + "\n\n\\end{document}"
+              out_path.write_text(full_doc, encoding="utf-8")
+              print(f"  Saved: {out_path}")
+          EOF
+
+      - name: Commit LaTeX files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add latex/
+          git diff --staged --quiet || git commit -m "Auto-convert notes to LaTeX"
+          git push
