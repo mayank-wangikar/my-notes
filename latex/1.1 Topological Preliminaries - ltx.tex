@@ -1,9 +1,9 @@
 \documentclass[11pt]{article}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
-\usepackage{hyperref}
 \usepackage{parskip}
-\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{cleveref}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -40,27 +40,30 @@ $T = \{ \emptyset, X \}$ is trivial topology
 
 $T = P(X)$ is discrete topology
 
-* For $A \subseteq X$, where $T$ is a topology in $X$. Then $T_A$ is an induced topology in $A$
+* For $A \subseteq X$, where $T$ is a topology in $X$
+
+Then $T_A$ is an induced topology in $A$
 
 % --- Page 2 ---
 \[ T_A = \bigcap \{ U \setminus A \mid U \in \mathcal{T} \} \]
 
 * In a topological spaces, a closed set is a complement of an open set.
 
-* For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap V \), \( S \) is the set of all closed sets containing \( E \).
+* For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap \{ V \mid V \text{ is closed and } V \supseteq E \} \).
 
-* A neighbourhood of \( x \in X \), is any open set containing \( x \).
+* A neighborhood of \( x \in X \), is any open set containing \( x \).
 
 * A mapping \( f \) from \( X_1 \) to \( X_2 \) (\( X_1 \xrightarrow{f} X_2 \)) is an assignment of each \( x \in X_1 \) of an element \( f(x) \in X_2 \) where \( X_1, X_2 \) are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
 
 % --- Page 3 ---
 * The mapping $f$ is continuous if and only if for every open set $O_2$ in $X_2$, the set $f^{-1}(O_2)$ is an open set in $X_1$. (note $f^{-1}$ need not be a mapping)
 
-* For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $U$ of $f(x)$, there exists a nbd $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$.)
+* For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighborhood $U$ of $f(x)$, there exists a neighborhood $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$.)
 
 We can show the equivalence of both definitions.
 
 \begin{lemma}
+\label{lemma:composition}
 Composition of continuous maps are continuous.
 \end{lemma}
 
@@ -85,7 +88,7 @@ $\mathcal{B} = \{ O_1 \times O_2 \mid O_1 \in \tau_1, O_2 \in \tau_2 \}$.
 
 $*$ If $p_1: X_1 \times X_2 \rightarrow X_1$ and
 $p_2: X_1 \times X_2 \rightarrow X_2$ are such that
-$p_1(x_1 \times x_2) = x_1$, and $p_2(x_1 \times x_2) = x_2$ resp.
+$p_1(\alpha_1 \times \alpha_2) = \alpha_1$, and $p_2(\alpha_1 \times \alpha_2) = \alpha_2$ resp.
 Then $p_1, p_2$ are projections of $X_1 \times X_2$.
 \end{example}
 
@@ -101,50 +104,56 @@ For open map, observe every open set in $X$ can be written as $U \times V$ where
 
 Now, $p_1(U \times V) = U$.
 
-For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ open.
+For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ is open.
 
+$*$ A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
 \end{proof}
-
-* A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a finite covering.
 
 % --- Page 6 ---
-* A topological space $X$ is compact, if every open covering of $X$ contains a finite covering.
-A subset $A$ is said to be compact, if $A$ is compact in the induced topology.
+\begin{itemize}
+\item A topological space $X$ is \textbf{compact}, if every open covering of $X$ contains a finite covering. A subset $A$ is said to be compact, if $A$ is compact in the induced topology.
 
 \begin{remark}
-(i) $\mathbb{R}$ is not compact
-
-(ii) If $A \subseteq X$, and $|A| < +\infty$, then $A$ is compact.
-
-(iii) Let $a, b \in \mathbb{R}$, $a \leq b$ then $[a, b]$ is compact in $\mathbb{R}$.
+    \begin{enumerate}
+        \item $\mathbb{R}$ is not compact
+        \item If $A \subseteq X$, and $|A| < +\infty$, then $A$ is compact.
+        \item Let $a, b \in \mathbb{R}$, $a \leq b$ then $[a, b]$ is compact in $\mathbb{R}$.
+    \end{enumerate}
 \end{remark}
 
-\begin{proof}: refer to theorem 27.1 and corollary 27.2 of Munkres.
-\end{proof}
+\textbf{Proof:} refer to \labelcref{thm:27.1} and corollary \labelcref{cor:27.2} of Munkres.
 
-Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out prahlad sir's notes on General Topology for alternate path)
+Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out Prahlad sir's notes on General Topology for alternate path)
+\end{itemize}
 
 % --- Page 7 ---
-Given an open covering of \([a, b]\) say, \(A\).
+Given an open covering of \([a, b]\) say, \(\mathcal{A}\).
 
-STEP 1: For \(x \in [a, b]\) there exists \(y \in [a, b]\) and \(y > x\) such that \([a, y]\) is covered by at most two elements of \(A\). (Do case where imm. succ. exist and imm. succ doesn't exist).
+STEP 1: For \(x \in [a, b]\) there exists \(y \in [a, b]\)
+and \(y > x\) such that \([a, y]\) is covered by
+at most two elements of \(\mathcal{A}\). (Do case where imm. succ
+exist and imm. succ doesn't exist).
 
-STEP 2: \(C = \{y \in [a, b] \mid [a, y]\) are covered by finite elements of \(A\}\).
+STEP 2: \(C = \{y \in [a, b] \mid [a, y]\) are covered by
+finite elements of \(\mathcal{A}\}\)
 
-Observe \(C \neq \emptyset\) by applying STEP 1 for \(x = a\) and apply least upper bound property where \(c = \sup C\).
+Observe \(C \neq \emptyset\) by applying STEP 1 for \(x = a\)
+and apply least upper bound property where \(c = \sup C\).
 
-STEP 3: Show \(c \in C\).
+STEP 3: Show \(c \in C\)
 
 STEP 4: \(b = C\).
 
 % --- Page 8 ---
 % Finite intersection property : In topological space
-% X , let $\exists F_\lambda$ be collection of closed sets . If
-% intersection of any finite subcollection of $\exists F_\lambda$ is non-empty. Then $\bigcap_\lambda F_\lambda \neq \emptyset$.
+% X, let $\mathcal{F}_{\lambda}$ be collection of closed sets. If
+% intersection of any finite subcollection of $\mathcal{F}_{\lambda}$ is non-empty.
+% Then $\bigcap_{\lambda} F_{\lambda} \neq \emptyset$.
 
 % A space holds FIT iff the space is cpt.
 
 \begin{theorem}
+\label{thm:closed_subset_compact}
 A closed subset of a compact set is compact
 \end{theorem}
 
@@ -156,28 +165,41 @@ For any open covering of Y, say $\mathcal{A}$, we construct $\mathcal{A} \cup \{
 
 % --- Page 9 ---
 \begin{theorem}
+\label{thm:continuous_image_compact}
 A continuous image of a compact set is compact.
-\end{theorem}
 \begin{proof}
 $\checkmark$
 \end{proof}
+\end{theorem}
 
 \begin{theorem}
-If $X$ is compact and $Y$ is Hausdorff and $f: X \rightarrow Y$ is continuous. Then $f(X)$ is closed in $Y$.
-\end{theorem}
+\label{thm:compact_hausdorff_closed}
+If $X$ is compact and $Y$ is Hausdorff and $f: X \rightarrow Y$ is continuous, then $f(X)$ is closed in $Y$.
 \begin{proof}
 $\checkmark$
 \end{proof}
+\end{theorem}
 
-* A space $X$ is locally compact, if for every $x \in X$, t $\mathbb{R}$
-
+* A space $X$ is locally compact, if for every $x \in X$, tcompact_locally_compact}
+Every compact space is locally compact.
 \begin{proof}
-$\bigcirc$ $\mathbb{R}$ is not compact
+$\checkmark$
 \end{proof}
+\end{theorem}
+
+Converse may not be true. Example: $\mathbb{R}$
+
+\begin{example}
+\label{ex:non_compact_locally_compact}
+$\mathbb{R}$ is not compact.
+\begin{proof}
+$\bigcirc$
+\end{proof}
+\end{example}
 
 % --- Page 10 ---
 For $x \in \mathbb{R}$, there exists $(x-\epsilon, x+\epsilon)$
-as a nbhd of $x$ and $(\overline{x-\epsilon, x+\epsilon}) = [x-\epsilon, x+\epsilon]$
+as a neighborhood of $x$ and $(\overline{x-\epsilon, x+\epsilon}) = [x-\epsilon, x+\epsilon]$
 is compact.
 
 * Homeomorphism is a mapping between
@@ -186,8 +208,10 @@ that $f$ is bijective map where $f, f^{-1}$ are
 continuous mappings.
 
 \begin{example}
-Add from C. chandrashekaran.
+% illegible
 \end{example}
+
+Add from C. Chandrashekaran.
 
 % --- Page 11 ---
 Note: All topological spaces are $T_1$, moving forward unless mentioned otherwise.
@@ -196,36 +220,44 @@ Note: All topological spaces are $T_1$, moving forward unless mentioned otherwis
 
 * Two sets $M_1$ and $M_2$ are separated by a real function if there exists a continuous real function $f: X \rightarrow [0,1]$ such that $f(x) = 0$ for $x \in M_1$ and $f(x) = 1$ for $x \in M_2$.
 
-$T_1$: For any disjoint point, there exists an open set containing one and not the other. Equivalently, all singletons are closed.
+$T_1$: For any disjoint points, there exists an open set containing one and not the other. Equivalently, all singletons are closed.
 
-$T_2$ (Hausdorff): Two distinct points can be separated by open sets
+$T_2$ (Hausdorff): Two distinct points can be separated by open sets.
 
-$T_3$ (Regular): For closed set $F$ and $x \notin F$, can be separated by open sets
+$T_3$ (Regular): For closed set $F$ and $x \notin F$, can be separated by open sets.
 
 $T_4$ (Normal): Disjoint closed sets can be separated
 
 % --- Page 12 ---
-by open sets.
+\begin{itemize}
+\item by open sets.
+\end{itemize}
 
 \begin{remark}
 $T_4 \Rightarrow T_3 \Rightarrow T_2 \Rightarrow T_1$.
 \end{remark}
 
-\textbf{Examples:} From the book.
+\begin{example}
+From the book.
+\end{example}
 
-\begin{lemma}[Urysohn's lemma]
+\begin{lemma}
+\textbf{Urysohn's lemma}
+
 In a normal space, every two disjoint closed sets can be separated by a real function.
 \end{lemma}
 
-\begin{theorem}[Tychanoff Theorem]
+\begin{theorem}
+\textbf{Tychanoff Theorem}
+
 Product of compact sets are compact
-\end{theorem}
 
 There are two approaches of proving this theorem
 \begin{enumerate}
 \item Zorn's lemma
 \item Transfinite Induction
 \end{enumerate}
+\end{theorem}
 
 % --- Page 13 ---
 % blank page
