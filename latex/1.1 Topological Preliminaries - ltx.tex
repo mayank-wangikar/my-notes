@@ -1,15 +1,20 @@
 \documentclass[11pt]{article}
 \usepackage{amsmath, amssymb, amsthm}
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
 \usepackage{hyperref}
-\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+\usepackage{parskip}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}{Example}[section]
-\newtheorem{corollary}{Corollary}[section]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
 \begin{document}
 
 \begin{center}
@@ -21,72 +26,67 @@
 
 
 % --- Page 1 ---
-\begin{itemize}
-    \item A \underline{topology} $T$ in a set $X$ is a collection of subsets of $X$ (called open sets) satisfying the following axioms:
-    \begin{enumerate}
-        \item the union of any number of open sets is open
-        \item the intersection of any finite number of open sets is open
-        \item $X$, $\emptyset$ are open.
-    \end{enumerate}
+* A topology $T$ in a set $X$ is a collection of subsets of $X$ (called open sets) satisfying the following axioms:
 
-    A \underline{topological space} is a set $X$ with a topology $T$ in $X$.
+(1) the union of any number of open sets is open
 
-    \begin{itemize}
-        \item $T = \{ \emptyset, X \}$ is \underline{trivial topology}
-        \item $T = \mathcal{P}(X)$ is \underline{discrete topology}
-    \end{itemize}
+(2) the intersection of any finite number of open sets is open.
 
-    \item For $A \subseteq X$, where $T$ is a topology in $X$. Then $T_A$ is an \underline{induced topology} in $A$
-\end{itemize}
+(3) $X$, $\emptyset$ are open.
+
+A topological space is a set $X$ with a topology $T$ in $X$.
+
+$T = \{ \emptyset, X \}$ is trivial topology
+
+$T = P(X)$ is discrete topology
+
+* For $A \subseteq X$, where $T$ is a topology in $X$. Then $T_A$ is an induced topology in $A$
 
 % --- Page 2 ---
-\[ T_A = \bigcap \{ U \setminus A \mid U \in \mathcal{T}_\xi \} \]
+\[ T_A = \bigcap U \setminus A \mid U \in T^\xi \]
 
-\begin{itemize}
-    \item In a topological spaces, a \textbf{closed set} is a complement of an open set.
+* In a topological spaces, a closed set is a complement of an open set.
 
-    \item For $E \subseteq X$, $\overline{E}$ is said to be \textbf{closure} of $E$, where $\overline{E} = \bigcap \{ V \mid V \text{ is closed and } V \supseteq E \}$, $S$ is the set of all closed sets containing $E$.
+* For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap V \), \( S \) is the set of all closed sets containing \( E \).
 
-    \item A \textbf{neighbourhood} of $x \in X$, is any open set containing $x$.
+* A neighbourhood of \( x \in X \), is any open set containing \( x \).
 
-    \item A \textbf{mapping} $f$ from $X_1$ to $X_2$ ($X_1 \xrightarrow{f} X_2$) is an assignment of each $x \in X_1$ of an element $f(x) \in X_2$ where $X_1$, $X_2$ are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
-\end{itemize}
+* A mapping \( f \) from \( X_1 \) to \( X_2 \) (\( X_1 \xrightarrow{f} X_2 \)) is an assignment of each \( x \in X_1 \) of an element \( f(x) \in X_2 \) where \( X_1, X_2 \) are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
 
 % --- Page 3 ---
-\begin{itemize}
-    \item The mapping $f$ is \underline{continuous} if and only if for every open set $O_2$ in $X_2$, the set $f^{-1}(O_2)$ is an open set in $X_1$. (note $f^{-1}$ need not be a mapping)
+* The mapping $f$ is continuous if and only if for every open set $O_2$ in $X_2$, the set $f^{-1}(O_2)$ is an open set in $X_1$. (note $f^{-1}$ need not be a mapping)
 
-    \item For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $(U)$ of $f(x)$, there exists a nbd $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$.)
-\end{itemize}
+* For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $U$ of $f(x)$, there exists a nbhd $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$.)
 
-We can show the equivalence of both definitions
+We can show the equivalence of both definitions.
 
 \begin{lemma}
-    Composition of continuous maps are continuous.
+Composition of continuous maps are continuous.
 \end{lemma}
 
 \begin{proof}
-    If $f: X \rightarrow Y$, $g: Y \rightarrow Z$ are continuous.
+If $f: X \rightarrow Y$, $g: Y \rightarrow Z$ are continuous.
 
-    \begin{itemize}
-        \item Goal 1: $(g \circ f)^{-1}(V)$ is open in $X$ where $V$ is any open set in $Z$.
-        \item Goal 2: $(g \circ f)^{-1}(V) = f^{-1} \circ g^{-1}(V)$
-    \end{itemize}
+Goal 1: $(g \circ f)^{-1}(V)$ is open in $X$ where $V$ is any open set in $Z$.
+
+Goal 2: $(g \circ f)^{-1}(V) = f^{-1} \circ g^{-1}(V)$
 \end{proof}
 
 % --- Page 4 ---
-(i) Every mapping is continuous from $X$ to $Y$ if $X$ has discrete topology. (I showed converse is NOT true).
+\begin{example}
+(c i) Every mapping is continuous from $X$ to $Y$ if $X$ has discrete topology. (I showed converse is NOT true).
 
-(ii) If $X$ is a topological space, $Y$ a set with trivial topology, $f: X \rightarrow Y$ is continuous.
+(c ii) If $X$ is a topological space, $Y$ a set with trivial topology, $f: X \rightarrow Y$ is continuous.
 
 * Topological product of $X_1, X_2$ is $X = X_1 \times X_2$ where topology in $X$ is generated by a basis
-\[ \mathcal{B} = \{ O_1 \times O_2 \mid O_1 \in \tau_1, O_2 \in \tau_2 \}. \]
-(Def$^{n}$ of basis add to notes; I'm not writing here)
+\[ \mathcal{B} = \{ O_1 \times O_2 \mid O_1 \in \tau_1, O_2 \in \tau_2 \} \]
+(Def$^n$ of basis add to notes, I'm not writing here)
 
 * If $p_1: X_1 \times X_2 \rightarrow X_1$ and
 \[ p_2: X_1 \times X_2 \rightarrow X_2 \] are such that
 \[ p_1(x_1 \times x_2) = x_1, \text{ and } p_2(x_1 \times x_2) = x_2 \text{ resp.} \]
 Then $p_1, p_2$ are projections of $X_1 \times X_2$.
+\end{example}
 
 % --- Page 5 ---
 \begin{lemma}
@@ -96,52 +96,49 @@ Projections are continuous, open mappings.
 \begin{proof}
 It suffice to show for $p_1$, and for $p_2$ is the same argument.
 
-For open map, observe every open set in $X$ can be written as $U \times V$ where $V$ is an open set in $X_1$ and $V$ is an open set in $X_2$.
+For open map, observe every open set in $X$ can be written as $U \times V$ where $U$ is an open set in $X_1$, and $V$ is an open set in $X_2$.
 
 Now, $p_1(U \times V) = U$.
 
 For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ open.
+
 \end{proof}
 
-\begin{remark}
-$*$ A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
-\end{remark}
+$*$ A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a finite covering.
 
 % --- Page 6 ---
-\begin{definition}
-A topological space $X$ is \underline{compact}, if every open covering of $X$ contains a finite covering.
-A subset $A$ is said to be compact, if $A$ is compact in the induced topology.
-\end{definition}
+* A topological space $X$ is compact, if every open covering of $X$ contains a finite covering. A subset $A$ is said to be compact, if $A$ is compact in the induced topology.
 
 \begin{remark}
-(i) $\mathbb{R}$ is not compact.
+(i) $\mathbb{R}$ is not compact
 
 (ii) If $A \subseteq X$, and $|A| < +\infty$, then $A$ is compact.
 
-(iii) Let $a, b \in \mathbb{R}$, $a \leq b$, then $[a, b]$ is compact in $\mathbb{R}$.
+(iii) Let $a, b \in \mathbb{R}$, $a \leq b$ then $[a, b]$ is compact in $\mathbb{R}$.
+
+\textit{Proof:} refer to theorem 27.1 and corollary 27.2 of Munkres.
+
+Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out prahlad sir's notes on General Topology for alternate path)
 \end{remark}
 
-\begin{proof}
-Refer to theorem 27.1 and corollary 27.2 of Munkres.
-\end{proof}
-
-Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out Prahlad sir's notes on General Topology for alternate path.)
-
 % --- Page 7 ---
-Given an open covering of \([a, b]\) say, \(\mathcal{A}\).
+Given an open covering of \([a, b]\) say, \( \mathcal{A} \).
 
-STEP 1: For \(x \in [a, b]\) there exists \(y \in [a, b]\) and \(y > x\) such that \([a, y]\) is covered by at most two elements of \(\mathcal{A}\). (Do case where immediate successor exists and immediate successor doesn't exist).
+STEP 1: For \( x \in [a, b] \) there exists \( y \in [a, b] \) and \( y > x \) such that \([a, y]\) is covered by at most two elements of \( \mathcal{A} \). (Do case where imm. succ exist and imm. succ doesn't exist).
 
-STEP 2: \(C = \{y \in [a, b] \mid [a, y]\) are covered by finite elements of \(\mathcal{A}\}\).
+STEP 2: \( C = \{ y \in [a, b] \mid [a, y] \) are covered by finite elements of \( \mathcal{A} \} \)
 
-Observe \(C \neq \emptyset\) by applying STEP 1 for \(x = a\) and apply least upper bound property where \(c = \sup C\).
+Observe \( C \neq \emptyset \) by applying STEP 1 for \( x = a \) and apply least upper bound property where \( c = \sup C \).
 
-STEP 3: Show \(c \in C\).
+STEP 3: Show \( c \in C \)
 
-STEP 4: \(b = C\).
+STEP 4: \( b = C \).
 
 % --- Page 8 ---
-* Finite intersection property: In topological space $X$, let $\mathfrak{F} = \{F_\alpha\}_{\alpha \in I}$ be collection of closed sets. If intersection of any finite subcollection of $\mathfrak{F}$ is non-empty, then $\bigcap_{\alpha \in I} F_\alpha \neq \emptyset$.
+# Finite intersection property : In topological space
+$X$, let $\{F_\alpha\}_{\alpha \in I}$ be collection of closed sets. If
+intersection of any finite subcollection of $\{F_\alpha\}_{\alpha \in I}$
+is non-empty. Then $\bigcap_{\alpha \in I} F_\alpha \neq \emptyset$.
 
 A space holds FIT iff the space is cpt.
 
@@ -150,16 +147,21 @@ A closed subset of a compact set is compact
 \end{theorem}
 
 \begin{proof}
-Let $X$ be compact, and $Y$ be a closed subset of $X$.
+Let $X$ be compact, and $Y$ be a closed
+subset of $X$.
 
-For any open covering of $Y$, say $\mathcal{A}$, we construct $\mathcal{A} \cup \{X \setminus Y\}$ as an open covering of $X$ as $X \setminus Y$ is open. As $X$ is compact, let $\hat{\mathcal{A}}$ be a finite subcover of $X$. Now, the finite subcover of $Y$ we get from $\hat{\mathcal{A}}$ will not contain $X \setminus Y$, hence finite subcover of $\mathcal{A}$.
+For any open covering of $Y$, say $\mathcal{A}$,
+we construct $\mathcal{A} \cup \{X \setminus Y\}$ as an open covering
+of $X$ as $X \setminus Y$ is open. As $X$ is compact,
+Let $\mathcal{A}'$ be a finite subcover of $X$. Now, the
+finite subcover of $Y$ we get from $\mathcal{A}'$ will not
+contain $\{X \setminus Y\}$, hence finite subcover of $\mathcal{A}$.
 \end{proof}
 
 % --- Page 9 ---
 \begin{theorem}
 A continuous image of a compact set is compact.
 \end{theorem}
-
 \begin{proof}
 $\checkmark$
 \end{proof}
@@ -167,58 +169,58 @@ $\checkmark$
 \begin{theorem}
 If $X$ is compact and $Y$ is Hausdorff and $f: X \rightarrow Y$ is continuous, then $f(X)$ is closed in $Y$.
 \end{theorem}
-
 \begin{proof}
 $\checkmark$
 \end{proof}
 
-\begin{definition}
-A space $X$ is locally compact, if for every $x \in X$, t $\mathbb{R}$
-\end{remark}
+* A space $X$ is locally compact, if for every $x \in X$, t $\mathbb{R}$
 
 \begin{proof}
-$\mathbb{R}$ is not compact.
+$\bigcirc$ $\mathbb{R}$ is not compact
 \end{proof}
 
 % --- Page 10 ---
-For $x \in \mathbb{R}$, there exists $(x-\epsilon, x+\epsilon)$ as a nbhd of $x$ and $\overline{(x-\epsilon, x+\epsilon)} = [x-\epsilon, x+\epsilon]$ is compact.
+For $x \in \mathbb{R}$, there exists $(x-\epsilon, x+\epsilon)$
+as a nbhd of $x$ and $(\overline{x-\epsilon, x+\epsilon}) = [x-\epsilon, x+\epsilon]$
+is compact.
 
-* \begin{definition}
-Homeomorphism is a mapping between two topological spaces $X, Y$ say $f$ such that $f$ is bijective map where $f, f^{-1}$ are continuous mappings.
-\end{definition}
+* Homeomorphism is a mapping between
+two topological spaces $X, Y$ say $f$ such
+that $f$ is bijective map where $f, f^{-1}$ are
+continuous mappings.
 
-\textbf{Examples}
-
-Add from C. Chandrashekaran.
+\begin{example}
+Add from C. chandrashekaran.
+\end{example}
 
 % --- Page 11 ---
-Note: All topological spaces are \( T_1 \), moving forward unless mentioned otherwise.
+% Note: All topological spaces are \( T_1 \), moving forward unless
+% mentioned otherwise.
 
-\begin{definition}
-Two sets \( M_1 \) and \( M_2 \) are \underline{separated by open sets} if there exist open sets \( O_1 \) and \( O_2 \) containing \( M_1 \) and \( M_2 \) such that \( O_1 \cap O_2 = \emptyset \).
-\end{definition}
+* Two sets \( M_1 \) and \( M_2 \) are \underline{separated by open sets}
+  if there exist open sets \( O_1 \) and \( O_2 \) containing
+  \( M_1 \) and \( M_2 \) such that \( O_1 \cap O_2 = \emptyset \).
 
-\begin{definition}
-Two sets \( M_1 \) and \( M_2 \) are \underline{separated by a real function} if there exists a continuous real function \( f: X \rightarrow [0,1] \) such that \( f(x) = 0 \) for \( x \in M_1 \) and \( f(x) = 1 \) for \( x \in M_2 \).
-\end{definition}
+* Two sets \( M_1 \) and \( M_2 \) are \underline{separated by a real function}
+  if there exists a continuous real function
+  \( f: X \rightarrow [0, 1] \) such that \( f(x) = 0 \) for \( x \in M_1 \)
+  and \( f(x) = 1 \) for \( x \in M_2 \).
 
-\begin{definition} ($T_1$)
-For any disjoint points, there exists an open set containing one and not the other. Equivalently, all singletons are closed.
-\end{definition}
+\( T_1 \): For any disjoint point, there exists an open
+set containing one and not the other. Equivalently,
+all singletons are closed.
 
-\begin{definition} ($T_2$ (Hausdorff))
-Two distinct points can be separated by open sets.
-\end{definition}
+\( T_2 \) (Hausdorff): Two distinct points can be separated
+by open set
 
-\begin{definition} ($T_3$ (Regular))
-For closed set \( F \) and \( x \notin F \), can be separated by open sets.
-\end{definition}
+\( T_3 \) (Regular): For closed set \( F \) and \( x \notin F \), can
+be separated by open sets
 
-\begin{definition} ($T_4$ (Normal))
-Disjoint closed sets can be separated by open sets.
-\end{definition}
+\( T_4 \) (Normal): Disjoint closed sets can be separated
 
 % --- Page 12 ---
+by open sets.
+
 \begin{remark}
 $T_4 \Rightarrow T_3 \Rightarrow T_2 \Rightarrow T_1$.
 \end{remark}
@@ -230,49 +232,16 @@ In a normal space, every two disjoint closed sets can be separated by a real fun
 \end{lemma}
 
 \begin{theorem}[Tychanoff Theorem]
-Product of compact sets are compact.
+Product of compact sets are compact
 \end{theorem}
 
-There are two approaches of proving this theorem:
+There are two approaches of proving this theorem
 \begin{enumerate}
 \item Zorn's lemma
 \item Transfinite Induction
 \end{enumerate}
 
 % --- Page 13 ---
-\begin{definition}
-Let $X$ be a topological space. A subset $A \subseteq X$ is called \textit{dense} in $X$ if $\overline{A} = X$, where $\overline{A}$ denotes the closure of $A$.
-\end{definition}
-
-\begin{theorem}
-Let $X$ be a topological space. The following statements are equivalent for a subset $A \subseteq X$:
-\begin{enumerate}
-    \item $A$ is dense in $X$.
-    \item For every non-empty open set $U \subseteq X$, $U \cap A \neq \emptyset$.
-    \item The only dense subset of $X$ containing $A$ is $X$ itself.
-\end{enumerate}
-\end{theorem}
-
-\begin{lemma}
-Let $X$ be a metric space and $A \subseteq X$ be a subset. If $A$ is dense in $X$, then for every $x \in X$ and every $\epsilon > 0$, there exists $a \in A$ such that $d(x, a) < \epsilon$.
-\end{lemma}
-
-\begin{proof}
-Let $x \in X$ and $\epsilon > 0$. Since $A$ is dense in $X$, the closure of $A$ is $X$. The open ball $B(x, \epsilon)$ is an open set in $X$. By the definition of density, $B(x, \epsilon) \cap A \neq \emptyset$. Therefore, there exists $a \in A$ such that $a \in B(x, \epsilon)$, which implies $d(x, a) < \epsilon$.
-\end{proof}
-
-\begin{remark}
-The concept of density is crucial in analysis and topology. For instance, the set of rational numbers $\mathbb{Q}$ is dense in the real numbers $\mathbb{R}$ with the standard topology.
-\end{remark}
-
-Let $X$ be a topological space and $A \subseteq X$. Suppose $A$ is dense in $X$. Then for any continuous function $f: X \to Y$ where $Y$ is another topological space, the restriction of $f$ to $A$ determines $f$ on all of $X$ if $A$ is also dense in the domain of $f$ in $Y$ (this is not always true, but it holds under certain conditions).
-
-Consider a sequence $\{x_n\}$ in $X$ such that $x_n \to x$ in $X$. If $A$ is dense in $X$, then for any $x \in X$, there exists a sequence $\{a_n\}$ in $A$ such that $a_n \to x$.
-
-% illegible
-
-\begin{definition}
-A topological space $X$ is called \textit{separable} if it contains a countable dense subset.
-\end{definition}
+% blank page
 
 \end{document}
