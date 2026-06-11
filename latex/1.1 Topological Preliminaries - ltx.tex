@@ -26,62 +26,53 @@
 
 
 % --- Page 1 ---
-\[
-\begin{aligned}
-&\text{Topological Preliminaries} \\
-&\quad \ast \text{ A } \underline{\text{topology}} \, T \text{ in a set } X \text{ is a collection} \\
-&\quad \text{of subsets of } X \text{ (called open sets) satisfying the following axioms:} \\
-&\quad (1) \text{ the union of any number of open sets is open} \\
-&\quad (2) \text{ the intersection of any finite number of open sets is open.} \\
-&\quad (3) \, X, \, \emptyset \text{ are open.} \\
-&\quad \text{A } \underline{\text{topological space}} \text{ is a set } X \text{ with a topology } T \text{ in } X. \\
-&\quad T = \{ \emptyset, \, X \} \text{ is } \underline{\text{trivial topology}} \\
-&\quad T = \mathcal{P}(X) \text{ is } \underline{\text{discrete topology}} \\
-&\quad \ast \text{ For } A \subseteq X, \text{ where } T \text{ is a topology in } X \\
-&\quad \text{Then } T_A \text{ is an } \underline{\text{induced topology}} \text{ in } A
-\end{aligned}
-\]
+% Topological Preliminaries
+
+* A \underline{topology} $T$ in a set $X$ is a collection of subsets of $X$ (called open sets) satisfying the following axioms:
+
+  (1) the union of any number of open sets is open
+
+  (2) the intersection of any finite number of open sets is open.
+
+  (3) $X$, $\emptyset$ are open.
+
+A \underline{topological space} is a set $X$ with a topology $T$ in $X$.
+
+$T = \{ \emptyset, X \}$ is \underline{trivial topology}
+
+$T = \mathcal{P}(X)$ is \underline{discrete topology}
+
+* For $A \subseteq X$, where $T$ is a topology in $X$. Then $T_A$ is an \underline{induced topology} in $A$
 
 % --- Page 2 ---
-\[ T_A = \bigcap \{ U \cup A \mid U \in \mathcal{T} \} \]
+\[ T_A = \bigcap \{ U \setminus A \mid U \in \mathcal{T} \} \]
 
 * In a topological spaces, a closed set is a complement of an open set.
 
-* For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap V \), \( S \) is the set of all closed sets containing \( E \).
+* For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap \{ V \mid V \text{ is closed and } E \subseteq V \} \).
 
 * A neighborhood of \( x \in X \), is any open set containing \( x \).
 
 * A mapping \( f \) from \( X_1 \) to \( X_2 \) (\( X_1 \xrightarrow{f} X_2 \)) is an assignment of each \( x \in X_1 \) of an element \( f(x) \in X_2 \) where \( X_1, X_2 \) are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
 
 % --- Page 3 ---
-\[
-\begin{array}{l}
-\ast \text{The mapping } f \text{ is } \underline{\text{continuous}} \text{ if and only if} \\
-\quad \text{for every open set } O_2 \text{ in } X_2, \text{ the set } f^{-1}(O_2) \\
-\quad \text{is an open set in } X_1. \text{ (note } f^{-1} \text{ need not be a} \\
-\quad \text{mapping)} \\
-\ast \text{For } x \in X_1, \text{ we say that } f \text{ is continuous at } x, \text{ if to every neighborhood } U \text{ of } f(x), \text{ there} \\
-\quad \text{exists a neighborhood } V \text{ of } x, \text{ such that } f(V) \subset U. \\
-\quad (f \text{ is continuous at every point of } X_1.) \\
-\quad \text{We can show the equivalence of both definitions.} \\
-\end{array}
-\]
+* The mapping $f$ is continuous if and only if for every open set $O_2$ in $X_2$, the set $f^{-1}(O_2)$ is an open set in $X_1$. (note $f^{-1}$ need not be a mapping)
 
-\[
+* For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $U$ of $f(x)$, there exists a nbd $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$.)
+
+We can show the equivalence of both definitions.
+
 \begin{lemma}
-\text{Composition of continuous maps are continuous.}
-\label{lem:composition}
+Composition of continuous maps are continuous.
 \end{lemma}
-\]
 
-\[
 \begin{proof}
-\text{If } f: X \rightarrow Y, g: Y \rightarrow Z \text{ are continuous.} \\
-\text{Goal 1: } (g \circ f)^{-1}(V) \text{ is open in } X \text{ where } V \text{ is} \\
-\quad \text{any open set in } Z. \\
-\text{Goal 2: } (g \circ f)^{-1}(V) = f^{-1} \circ g^{-1}(V)
+If $f: X \to Y$, $g: Y \to Z$ are continuous.
+
+Goal 1: $(g \circ f)^{-1}(V)$ is open in $X$ where $V$ is any open set in $Z$.
+
+Goal 2: $(g \circ f)^{-1}(V) = f^{-1} \circ g^{-1}(V)$
 \end{proof}
-\]
 
 % --- Page 4 ---
 \begin{example}
@@ -108,17 +99,12 @@ Projections are continuous, open mappings.
 \begin{proof}
 It suffice to show for $p_1$, and for $p_2$ is the same argument.
 
-For open map, observe every open set in $X$ can be written as $U \times V$ where $U$ is an open set in $X_1$, and $V$ is an open set in $X_2$.
+For open map, observe every open set in $X$ can be written as $U \times V$ where $U$ is an open set in $X_1$, and $V$ is an open set in $X_2$. Now, $p_1(U \times V) = U$.
 
-Now, $p_1(U \times V) = U$.
+For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ open.
 
-For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ is open.
-
+$*$ A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
 \end{proof}
-
-\begin{remark}
-$\ast$ A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
-\end{remark}
 
 % --- Page 6 ---
 \begin{itemize}
@@ -140,22 +126,17 @@ Let $X$ be a simply ordered set having least upper bound property. Then every cl
 \end{itemize}
 
 % --- Page 7 ---
-Given an open covering of \([a, b]\) say, \(A\).
+Given an open covering of \([a, b]\) say, \( \mathcal{A} \).
 
-STEP 1: For \(x \in [a, b]\) there exists \(y \in [a, b]\)
-and \(y > x\) such that \([a, y]\) is covered by
-at most two elements of \(A\). (Do case where imm. succ
-exist and imm. succ doesn't exist).
+STEP 1: For \( x \in [a, b] \) there exists \( y \in [a, b] \) and \( y > x \) such that \([a, y]\) is covered by at most two elements of \( \mathcal{A} \). (Do case where immediate successor exist and immediate successor doesn't exist).
 
-STEP 2: \(C = \{ y \in [a, b] \mid [a, y] \text{ are covered by}\)
-finite elements of \(A \}\)
+STEP 2: \( C = \{ y \in [a, b] \mid [a, y] \) are covered by finite elements of \( \mathcal{A} \} \).
 
-Observe \(C \neq \emptyset\) by applying STEP 1 for \(x = a\)
-and apply least upper bound property where \(c = \sup C\).
+Observe \( C \neq \emptyset \) by applying STEP 1 for \( x = a \) and apply least upper bound property where \( c = \sup C \).
 
-STEP 3: Show \(c \in C\)
+STEP 3: Show \( c \in C \).
 
-STEP 4: \(b = C\).
+STEP 4: \( b = C \).
 
 % --- Page 8 ---
 % Finite intersection property : In topological space
@@ -186,7 +167,7 @@ $\checkmark$
 \end{theorem}
 
 \begin{theorem}
-\label{thm:compact_hausdorff_closed}
+\label{thm:compact_hausdorff}
 If $X$ is compact and $Y$ is Hausdorff and $f: X \rightarrow Y$ is continuous, then $f(X)$ is closed in $Y$.
 \begin{proof}
 $\checkmark$
@@ -202,9 +183,13 @@ $\checkmark$
 
 Converse may not be true. Example: $\mathbb{R}$
 
+\begin{example}
+\label{ex:non_compact_locally_compact}
+$\mathbb{R}$ is not compact.
 \begin{proof}
-$\bigcirc$ $\mathbb{R}$ is not compact
+$\bigcirc$
 \end{proof}
+\end{example}
 
 % --- Page 10 ---
 For $x \in \mathbb{R}$, there exists $(x-\varepsilon, x+\varepsilon)$
@@ -212,8 +197,8 @@ as a neighborhood of $x$ and $(\overline{x-\varepsilon, x+\varepsilon}) = [x-\va
 is compact.
 
 * Homeomorphism is a mapping between
-two topological spaces $X, Y$ say $f$ such
-that $f$ is bijective map where $f, f^{-1}$ are
+two topological spaces $X$, $Y$ say $f$ such
+that $f$ is bijective map where $f$, $f^{-1}$ are
 continuous mappings.
 
 \begin{example}
@@ -233,7 +218,7 @@ Note: All topological spaces are \( T_1 \), moving forward unless mentioned othe
 
 \( T_3 \) (Regular): For closed set \( F \) and \( x \notin F \), can be separated by open sets.
 
-\( T_4 \) (Normal): Disjoint closed sets can be separated
+\( T_4 \) (Normal): Disjoint closed sets can be separated.
 
 % --- Page 12 ---
 \begin{itemize}
