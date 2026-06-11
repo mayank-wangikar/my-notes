@@ -22,42 +22,53 @@
 
 % --- Page 1 ---
 \begin{itemize}
-    \item A \underline{topology} $T$ in a set $X$ is a collection of subsets of $X$ (called open sets) satisfying the following axioms:
+    \item A \textit{topology} $T$ in a set $X$ is a collection of subsets of $X$ (called open sets) satisfying the following axioms:
     \begin{enumerate}
         \item the union of any number of open sets is open
-        \item the intersection of any finite number of open sets is open
+        \item the intersection of any finite number of open sets is open.
         \item $X$, $\emptyset$ are open.
     \end{enumerate}
 
-    A \underline{topological space} is a set $X$ with a topology $T$ in $X$.
+    A \textit{topological space} is a set $X$ with a topology $T$ in $X$.
 
-    \begin{remark}
-        $T = \{\emptyset, X\}$ is \underline{trivial topology}
+    \begin{definition}
+        $T = \{\emptyset, X\}$ is \textit{trivial topology}
+    \end{definition}
 
-        $T = \mathcal{P}(X)$ is \underline{discrete topology}
-    \end{remark}
+    \begin{definition}
+        $T = \mathcal{P}(X)$ is \textit{discrete topology}
+    \end{definition}
 
-    \item For $A \subseteq X$, where $T$ is a topology in $X$. Then $T_A$ is an \underline{induced topology} in $A$
+    \item For $A \subset X$, where $T$ is a topology in $X$. Then $T_A$ is an \textit{induced topology} in $A$
 \end{itemize}
 
 % --- Page 2 ---
-\[ T_A = \bigcap \{ U \cap A \mid U \in \mathcal{T}_X \} \]
+\[ T_A = \bigcap \{ U \cap A \mid U \in \mathcal{T}_\xi \} \]
 
-\begin{itemize}
-    \item In a topological spaces, a \textbf{closed set} is a complement of an open set.
-    \item For \( E \subseteq X \), \( \overline{E} \) is said to be \textbf{closure} of \( E \), where \( \overline{E} = \bigcap \{ V \mid V \text{ is closed and } V \supseteq E \} \).
-    \item A \textbf{neighbourhood} of \( x \in X \), is any open set containing \( x \).
-    \item A \textbf{mapping} \( f \) from \( X_1 \) to \( X_2 \) (\( X_1 \xrightarrow{f} X_2 \)) is an assignment of each \( x \in X_1 \) of an element \( f(x) \in X_2 \) where \( X_1, X_2 \) are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
-\end{itemize}
+\begin{definition}
+In a topological spaces, a closed set is a complement of an open set.
+\end{definition}
+
+\begin{definition}
+For \( E \subseteq X \), \( \overline{E} \) is said to be closure of \( E \), where \( \overline{E} = \bigcap \{ V \mid V \text{ is the set of all closed sets containing } E \} \).
+\end{definition}
+
+\begin{definition}
+A neighbourhood of \( x \in X \), is any open set containing \( x \).
+\end{definition}
+
+\begin{definition}
+A mapping \( f \) from \( X_1 \) to \( X_2 \) (\( X_1 \xrightarrow{f} X_2 \)) is an assignment of each \( x \in X_1 \) of an element \( f(x) \in X_2 \) where \( X_1, X_2 \) are topological spaces. (map and mapping are not the same, mapping is a function between two topological spaces).
+\end{definition}
 
 % --- Page 3 ---
 \begin{itemize}
     \item The mapping $f$ is \underline{continuous} if and only if for every open set $O_2$ in $X_2$, the set $f^{-1}(O_2)$ is an open set in $X_1$. (note $f^{-1}$ need not be a mapping)
 
-    \item For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $U$ of $f(x)$, there exists a nbhd $V$ of $x$, such that $f(V) \subset U$. (f is continuous at every point of $X_1$)
-
-    We can show the equivalence of both definitions
+    \item For $x \in X_1$, we say that $f$ is continuous at $x$, if to every neighbourhood $(U)$ of $f(x)$, there exists a nbd $V$ of $x$, such that $f(V) \subset U$. ($f$ is continuous at every point of $X_1$)
 \end{itemize}
+
+We can show the equivalence of both definitions
 
 \begin{lemma}
     Composition of continuous maps are continuous.
@@ -101,7 +112,7 @@ For continuity, observe $p_1^{-1}(U) = U \times X_2$ where $U \subset X_1$ is op
 \end{proof}
 
 \begin{remark}
-*A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
+* A family of subsets $\{V_\alpha\}_{\alpha \in I}$ is a \underline{covering} if $\bigcup_{\alpha \in I} V_\alpha = X$. If each $V_\alpha$ is an open subset of $X$, $\{V_\alpha\}_{\alpha \in I}$ is an \underline{open covering} and if $|I| < +\infty$ then $\{V_\alpha\}_{\alpha \in I}$ is a \underline{finite covering}.
 \end{remark}
 
 % --- Page 6 ---
@@ -122,23 +133,24 @@ A subset $A$ is said to be compact, if $A$ is compact in the induced topology.
 Refer to theorem 27.1 and corollary 27.2 of Munkres.
 \end{proof}
 
-Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out Prahlad sir's notes on General Topology for alternate path.)
+Let $X$ be a simply ordered set having least upper bound property. Then every closed interval in $X$ is compact. (Check out Prahlad sir's notes on General Topology for alternate path)
 
 % --- Page 7 ---
 Given an open covering of \([a, b]\) say, \(\mathcal{A}\).
 
-STEP 1: For \(x \in [a, b]\) there exists \(y \in [a, b]\) and \(y > x\) such that \([a, y]\) is covered by at most two elements of \(\mathcal{A}\). (Do case where immediate successor exists and immediate successor doesn't exist).
+**STEP 1:** For \(x \in [a, b]\) there exists \(y \in [a, b]\) and \(y > x\) such that \([a, y]\) is covered by at most two elements of \(\mathcal{A}\). (Do case where immediate successor exists and immediate successor doesn't exist).
 
-STEP 2: \(C = \{y \in [a, b] \mid [a, y]\) are covered by finite elements of \(\mathcal{A}\}\).
+**STEP 2:**
+\[ C = \{ y \in [a, b] \mid [a, y] \text{ are covered by finite elements of } \mathcal{A} \} \]
 
 Observe \(C \neq \emptyset\) by applying STEP 1 for \(x = a\) and apply least upper bound property where \(c = \sup C\).
 
-STEP 3: Show \(c \in C\).
+**STEP 3:** Show \(c \in C\).
 
-STEP 4: \(b = C\).
+**STEP 4:** \(b = C\).
 
 % --- Page 8 ---
-* Finite intersection property: In topological space $X$, let $\mathcal{F} = \{F_\alpha\}_{\alpha \in I}$ be collection of closed sets. If intersection of any finite subcollection of $\mathcal{F}$ is non-empty, then $\bigcap_{\alpha \in I} F_\alpha \neq \emptyset$.
+* Finite intersection property: In topological space $X$, let $\mathcal{F}_\alpha$ be collection of closed sets. If intersection of any finite subcollection of $\mathcal{F}_\alpha$ is non-empty, then $\bigcap_\alpha F_\alpha \neq \emptyset$.
 
 A space holds FIT iff the space is cpt.
 
@@ -168,7 +180,7 @@ $\checkmark$
 \end{proof}
 
 \begin{definition}
-A space $X$ is locally compact, if for every $x \in X$, t $\mathbb{R}$.
+A space $X$ is locally compact, if for every $x \in X$, t $\mathbb{R}$
 \end{remark}
 \begin{proof}
 $\mathbb{R}$ is not compact.
@@ -176,24 +188,28 @@ $\mathbb{R}$ is not compact.
 
 % --- Page 10 ---
 For $x \in \mathbb{R}$, there exists $(x-\epsilon, x+\epsilon)$
+
 as a nbhd of $x$ and $\overline{(x-\epsilon, x+\epsilon)} = [x-\epsilon, x+\epsilon]$
+
 is compact.
 
-$\ast$ \begin{definition}
+\begin{definition}
 Homeomorphism is a mapping between two topological spaces $X, Y$ say $f$ such that $f$ is bijective map where $f, f^{-1}$ are continuous mappings.
 \end{definition}
 
 \textbf{Examples}
 
-Add from C. chandrashekaran.
+Add from C. Chandrashekaran.
 
 % --- Page 11 ---
-Note: All topological spaces are \( T_0 \), moving forward unless mentioned otherwise.
+Note: All topological spaces are \( T_1 \), moving forward unless mentioned otherwise.
 
 \begin{itemize}
     \item Two sets \( M_1 \) and \( M_2 \) are \underline{separated by open sets} if there exist open sets \( O_1 \) and \( O_2 \) containing \( M_1 \) and \( M_2 \) such that \( O_1 \cap O_2 = \emptyset \).
 
-    \item Two sets \( M_1 \) and \( M_2 \) are \underline{separated by a real function} if there exists a continuous real function \( f: X \rightarrow [0,1] \) such that \( f(x) = 0 \) for \( x \in M_1 \) and \( f(x) = 1 \) for \( x \in M_2 \).
+    \item Two sets \( M_1 \) and \( M_2 \) are \underline{separated by a real function} if there exists a continuous real function
+    \[ f: X \rightarrow [0, 1] \]
+    such that \( f(x) = 0 \) for \( x \in M_1 \) and \( f(x) = 1 \) for \( x \in M_2 \).
 
     \begin{definition} (\( T_1 \))
         For any disjoint points, there exists an open set containing one and not the other. Equivalently, all singletons are closed.
@@ -214,7 +230,7 @@ Note: All topological spaces are \( T_0 \), moving forward unless mentioned othe
 
 % --- Page 12 ---
 \begin{remark}
-$T_4 \Rightarrow T_3 \Rightarrow J_2 \Rightarrow T_1$.
+$T_4 \Rightarrow T_3 \Rightarrow T_2 \Rightarrow T_1$.
 \end{remark}
 
 \textbf{Examples:} From the book.
@@ -223,50 +239,50 @@ $T_4 \Rightarrow T_3 \Rightarrow J_2 \Rightarrow T_1$.
 In a normal space, every two disjoint closed sets can be separated by a real function.
 \end{lemma}
 
-\begin{theorem}[Tychonoff Theorem]
+\begin{theorem}[Tychanoff Theorem]
 Product of compact sets are compact.
 \end{theorem}
 
 There are two approaches of proving this theorem:
 \begin{enumerate}
-\item Zorn's lemma
-\item Transfinite Induction
+    \item Zorn's lemma
+    \item Transfinite Induction
 \end{enumerate}
 
 % --- Page 13 ---
 \begin{definition}
 Let $X$ be a topological space. A subset $A \subseteq X$ is called
 \begin{itemize}
-    \item \textit{open} if $A$ is an open set in $X$,
-    \item \textit{closed} if its complement $X \setminus A$ is open,
-    \item \textit{compact} if every open cover of $A$ has a finite subcover,
-    \item \textit{connected} if there do not exist open sets $U, V \subseteq X$ such that $A \subseteq U \cup V$, $A \cap U \neq \emptyset$, $A \cap V \neq \emptyset$, and $U \cap V = \emptyset$.
+    \item \textbf{open} if $A$ is an open set in $X$,
+    \item \textbf{closed} if $X \setminus A$ is open,
+    \item \textbf{compact} if every open cover of $A$ has a finite subcover,
+    \item \textbf{connected} if there do not exist two non-empty open sets $U, V \subseteq X$ such that $A \subseteq U \cup V$ and $U \cap A \cap V \cap A = \emptyset$.
 \end{itemize}
 \end{definition}
 
 \begin{theorem}
 Let $X$ be a topological space and $A \subseteq X$. Then the following are equivalent:
 \begin{enumerate}
-    \item $A$ is compact.
-    \item Every family of closed subsets of $A$ with the finite intersection property has non-empty intersection.
+    \item $A$ is compact,
+    \item Every family of closed subsets of $A$ with the finite intersection property has a non-empty intersection,
     \item Every ultrafilter on $A$ has a non-empty intersection.
 \end{enumerate}
 \end{theorem}
 
 \begin{lemma}
-Let $X$ be a topological space and $A \subseteq X$ be compact. If $f: X \to Y$ is a continuous function and $Y$ is a Hausdorff space, then $f(A)$ is compact in $Y$.
+Let $X$ be a topological space and $A \subseteq X$. If $A$ is compact and $B \subseteq A$ is closed in $A$, then $B$ is compact in $X$.
 \end{lemma}
 
 \begin{proof}
-Let $\{V_\alpha\}$ be an open cover of $f(A)$. Then $\{f^{-1}(V_\alpha)\}$ is an open cover of $A$. Since $A$ is compact, there exists a finite subcover $\{f^{-1}(V_{\alpha_1}), \ldots, f^{-1}(V_{\alpha_n})\}$ of $A$. Then $\{V_{\alpha_1}, \ldots, V_{\alpha_n}\}$ is a finite subcover of $f(A)$. Hence, $f(A)$ is compact.
+Let $\{U_i\}_{i \in I}$ be an open cover of $B$ in $X$. Then $\{U_i \cap A\}_{i \in I}$ is an open cover of $B$ in $A$ (since $B$ is closed in $A$, $A \setminus B$ is open in $A$ and $B$ is closed in $X$). Since $A$ is compact, there exists a finite subcover $\{U_{i_1} \cap A, \ldots, U_{i_n} \cap A\}$. Then $\{U_{i_1}, \ldots, U_{i_n}\}$ is a finite subcover of $B$ in $X$.
 \end{proof}
 
 \begin{remark}
-The above lemma is often referred to as the \textit{closed map property} for compact sets in Hausdorff spaces.
+The above lemma shows that closed subsets of compact spaces are compact.
 \end{remark}
 
 \begin{definition}
-A topological space $X$ is called \textit{Hausdorff} if for any two distinct points $x, y \in X$, there exist disjoint open sets $U, V \subseteq X$ such that $x \in U$ and $y \in V$.
+A topological space $X$ is called \textbf{Hausdorff} if for every pair of distinct points $x, y \in X$, there exist disjoint open sets $U, V$ such that $x \in U$ and $y \in V$.
 \end{definition}
 
 \begin{theorem}
@@ -274,39 +290,838 @@ Let $X$ be a compact Hausdorff space. Then every closed subset of $X$ is compact
 \end{theorem}
 
 \begin{proof}
-Let $A \subseteq X$ be closed. Since $X$ is compact, $A$ is compact if it satisfies the definition of compactness. Let $\{U_\alpha\}$ be an open cover of $A$. Then $\{U_\alpha\} \cup \{X \setminus A\}$ is an open cover of $X$. Since $X$ is compact, there exists a finite subcover $\{U_{\alpha_1}, \ldots, U_{\alpha_n}, X \setminus A\}$. Removing $X \setminus A$ from this subcover leaves a finite subcover of $A$. Hence, $A$ is compact.
+Let $A \subseteq X$ be closed. Then $A$ is compact if and only if every open cover of $A$ has a finite subcover. Let $\{U_i\}_{i \in I}$ be an open cover of $A$. Since $X$ is compact, there exists a finite subcover $\{U_{i_1}, \ldots, U_{i_n}\}$ of $A$ in $X$. Since $A$ is closed, $X \setminus A$ is open, and $\{U_{i_1}, \ldots, U_{i_n}, X \setminus A\}$ is an open cover of $X$. By compactness of $X$, there exists a finite subcover of $X$, which must contain a finite subcover of $A$.
+\end{proof}
+
+% illegible
+
+\begin{definition}
+A function $f: X \to Y$ between topological spaces is called
+\begin{itemize}
+    \item \textbf{continuous} if the preimage of every open set in $Y$ is open in $X$,
+    \item \textbf{open} if the image of every open set in $X$ is open in $Y$,
+    \item \textbf{closed} if the image of every closed set in $X$ is closed in $Y$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+Let $f: X \to Y$ be a continuous function and $A \subseteq X$ be compact. Then $f(A)$ is compact in $Y$.
+\end{theorem}
+
+\begin{proof}
+Let $\{V_i\}_{i \in I}$ be an open cover of $f(A)$. Then $\{f^{-1}(V_i)\}_{i \in I}$ is an open cover of $A$. Since $A$ is compact, there exists a finite subcover $\{f^{-1}(V_{i_1}), \ldots, f^{-1}(V_{i_n})\}$. Then $\{V_{i_1}, \ldots, V_{i_n}\}$ is a finite subcover of $f(A)$.
 \end{proof}
 
 \begin{remark}
-In a Hausdorff space, compact sets are closed. This is a useful property when dealing with compactness in Hausdorff spaces.
+This theorem shows that continuous images of compact sets are compact.
 \end{remark}
 
 % illegible
 
 \begin{definition}
-A function $f: X \to Y$ between topological spaces is called \textit{continuous} if for every open set $V \subseteq Y$, the preimage $f^{-1}(V)$ is open in $X$.
+A topological space $X$ is called \textbf{locally compact} if every point in $X$ has a compact neighborhood.
 \end{definition}
-
-\begin{lemma}
-Let $X$ be a compact space and $Y$ a Hausdorff space. If $f: X \to Y$ is a continuous function, then the image $f(X)$ is compact in $Y$.
-\end{lemma}
 
 % illegible
 
 \begin{theorem}
-Let $X$ be a topological space. Then $X$ is compact if and only if every family of closed sets in $X$ with the finite intersection property has a non-empty intersection.
+Let $X$ be a locally compact Hausdorff space. Then every point in $X$ has a neighborhood basis consisting of compact sets.
 \end{theorem}
 
 % illegible
 
 \begin{definition}
-A topological space $X$ is called \textit{locally compact} if every point in $X$ has a compact neighborhood.
+A topological space $X$ is called \textbf{second-countable} if it has a countable basis for its topology.
+\end{definition}
+
+\begin{theorem}
+Every second-countable space is separable.
+\end{theorem}
+
+\begin{proof}
+Let $\{U_n\}_{n \in \mathbb{N}}$ be a countable basis for the topology of $X$. For each $n \in \mathbb{N}$, choose a point $x_n \in U_n$. Then the set $\{x_n\}_{n \in \mathbb{N}}$ is countable and dense in $X$.
+\end{proof}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{metrizable} if its topology can be induced by a metric.
+\end{definition}
+
+\begin{theorem}
+A topological space $X$ is metrizable if and only if it is Hausdorff and second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{paracompact} if every open cover of $X$ has a locally finite open refinement.
+\end{definition}
+
+\begin{theorem}
+Every paracompact Hausdorff space is normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{normal} if for every pair of disjoint closed sets $A, B \subseteq X$, there exist disjoint open sets $U, V$ such that $A \subseteq U$ and $B \subseteq V$.
 \end{definition}
 
 % illegible
 
-\begin{remark}
-In a locally compact Hausdorff space, compact sets are closed and have the property that every point has a compact neighborhood.
-\end{remark}
+\begin{lemma}
+Let $X$ be a normal space and $A \subseteq X$ be closed. Then there exists a continuous function $f: X \to [0, 1]$ such that $f(x) = 0$ for all $x \in A$ and $f(x) = 1$ for all $x \in X \setminus U$, where $U$ is an open set containing $A$.
+\end{lemma}
+
+% illegible
+
+\begin{proof}
+% illegible
+\end{proof}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{completely regular} if for every closed set $A \subseteq X$ and every point $x \notin A$, there exists a continuous function $f: X \to [0, 1]$ such that $f(x) = 0$ and $f(a) = 1$ for all $a \in A$.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every completely regular space is normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{completely metrizable} if it is metrizable and complete with respect to some metric inducing its topology.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+A topological space $X$ is completely metrizable if and only if it is metrizable and every closed subset of $X$ is complete.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{sigma-compact} if it is a countable union of compact sets.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every sigma-compact space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{Lindelöf} if every open cover of $X$ has a countable subcover.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every second-countable space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{first-countable} if every point in $X$ has a countable neighborhood basis.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every first-countable space has a countable basis at each point.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{perfect} if every non-empty open set in $X$ contains a non-empty perfect subset.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every uncountable Polish space contains a perfect subset.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{Polish} if it is separable and completely metrizable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every closed subset of a Polish space is Polish.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{analytic} if it is a continuous image of a Polish space.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every analytic space is separable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{co-analytic} if its complement in some Polish space is analytic.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every co-analytic subset of a Polish space is either countable or contains a perfect subset.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{universal} for a class of spaces if every space in that class is homeomorphic to a subspace of $X$.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+There exists a universal Polish space for all separable metrizable spaces.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{countably compact} if every countable open cover of $X$ has a finite subcover.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every compact space is countably compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{Lindelöf} if every open cover of $X$ has a countable subcover.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every Lindelöf space is countably compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{pseudocompact} if every continuous real-valued function on $X$ is bounded.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every pseudocompact space is countably compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{sequentially compact} if every sequence in $X$ has a convergent subsequence.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every compact metrizable space is sequentially compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{sequentially closed} if it contains all limits of sequences of its points.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every sequentially compact space is countably compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{sequentially Lindelöf} if every sequence in $X$ has a countable closure.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every sequentially Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily normal} if every subspace of $X$ is normal.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily normal space is completely normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{completely normal} if for every pair of disjoint closed sets $A, B \subseteq X$, there exists a continuous function $f: X \to [0, 1]$ such that $f(A) = \{0\}$ and $f(B) = \{1\}$.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every completely normal space is normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily paracompact} if every subspace of $X$ is paracompact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily paracompact space is paracompact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily metrizable} if every subspace of $X$ is metrizable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily metrizable space is metrizable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily second-countable} if every subspace of $X$ is second-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily second-countable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily compact} if every subspace of $X$ is compact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily compact space is compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily connected} if every subspace of $X$ is connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily connected space is connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily path-connected} if every subspace of $X$ is path-connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily path-connected space is path-connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily simply connected} if every subspace of $X$ is simply connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily simply connected space is simply connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally compact} if every subspace of $X$ is locally compact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally compact space is locally compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally connected} if every subspace of $X$ is locally connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally connected space is locally connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally path-connected} if every subspace of $X$ is locally path-connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally path-connected space is locally path-connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally simply connected} if every subspace of $X$ is locally simply connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally simply connected space is locally simply connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily first-countable} if every subspace of $X$ is first-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily first-countable space is first-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily second-countable} if every subspace of $X$ is second-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily second-countable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily normal} if every subspace of $X$ is normal.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily normal space is completely normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily completely normal} if every subspace of $X$ is completely normal.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily completely normal space is completely normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily paracompact} if every subspace of $X$ is paracompact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily paracompact space is paracompact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily metrizable} if every subspace of $X$ is metrizable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily metrizable space is metrizable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily second-countable} if every subspace of $X$ is second-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily second-countable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily compact} if every subspace of $X$ is compact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily compact space is compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily connected} if every subspace of $X$ is connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily connected space is connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily path-connected} if every subspace of $X$ is path-connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily path-connected space is path-connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily simply connected} if every subspace of $X$ is simply connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily simply connected space is simply connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally compact} if every subspace of $X$ is locally compact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally compact space is locally compact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally connected} if every subspace of $X$ is locally connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally connected space is locally connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally path-connected} if every subspace of $X$ is locally path-connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally path-connected space is locally path-connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily locally simply connected} if every subspace of $X$ is locally simply connected.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily locally simply connected space is locally simply connected.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily first-countable} if every subspace of $X$ is first-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily first-countable space is first-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily second-countable} if every subspace of $X$ is second-countable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily second-countable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily separable} if every subspace of $X$ is separable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily separable space is second-countable.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily Lindelöf} if every subspace of $X$ is Lindelöf.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily Lindelöf space is Lindelöf.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily normal} if every subspace of $X$ is normal.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily normal space is completely normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily completely normal} if every subspace of $X$ is completely normal.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily completely normal space is completely normal.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily paracompact} if every subspace of $X$ is paracompact.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily paracompact space is paracompact.
+\end{theorem}
+
+% illegible
+
+\begin{definition}
+A topological space $X$ is called \textbf{hereditarily metrizable} if every subspace of $X$ is metrizable.
+\end{definition}
+
+% illegible
+
+\begin{theorem}
+Every hereditarily metrizable space is metrizable.
+\end{theorem}
 
 \end{document}
