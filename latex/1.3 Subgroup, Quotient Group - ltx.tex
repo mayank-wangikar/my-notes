@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+
+\begin{center}
+{\Large\textbf{1.3 Subgroup, Quotient Group}}\\
+\vspace{0.3cm}
+{\normalsize\today}
+\end{center}
+\vspace{0.5cm}
+
+
+% --- Page 1 ---
+* Let $G$ be a topological group and $H \subset G$. Then $H$ is a subgroup of topological group $G$ iff $H$ is a subgroup of group $G$ and $H$ is a closed set in topological space $G$.
+
+\begin{remark}
+$H$ is a topological group equipped with induced topology on $G$. A subgroup of an abstract group which is a topological group is a topological group. This works as restriction of continuous maps is continuous.
+\end{remark}
+
+* A normal subgroup $N$ of topological group $G$ if $N$ is a normal subgroup of abstract group $G$.
+
+% --- Page 2 ---
+\begin{Proposition}
+Let $G$ be a topological group. Let $H$ be a subgroup of abstract group $G$.
+
+(i) $\overline{H}$ is a subgroup of top. group $G$
+
+(ii) If $H$ is normal subgroup of $G$ then $\overline{H}$ is normal.
+
+\begin{proof}
+
+(i) Observe $\overline{H} = \bigcap_{V \in \mathcal{V}} HV$ where $\mathcal{V}$ is collection of all nbds of $e$. As $H \subseteq \overline{H}$ hence $\overline{H} \neq \emptyset$.
+
+For $x, y \in \overline{H}$ we want to show $xy^{-1} \in \overline{H}$.
+
+We know $m: G \times G \rightarrow G$ is continuous.
+\[
+(x, y) \mapsto xy^{-1}
+\]
+Observe $m^{-1}(\overline{H})$ is closed, and $H \times H \subseteq m^{-1}(\overline{H})$
+
+Hence $\overline{H} \times \overline{H} = \overline{H \times H} \subseteq m^{-1}(\overline{H})$ and this implies
+\[
+m(\overline{H} \times \overline{H}) \subseteq \overline{H}.
+\]
+
+% --- Page 3 ---
+Cii) We construct a mapping
+\[ n : G \times G \rightarrow G \]
+\[ (x, y) \mapsto x y x^{-1} \]
+and observe $n$ is a continuous map this implies
+$n^{-1}(\overline{H})$ is closed and similar to (Ci)
+\[ H \times H \subseteq n^{-1}(\overline{H}) \] this implies $\overline{H} \times \overline{H} = \overline{H} \times \overline{H}$
+is a subset of $n^{-1}(\overline{C(H)})$. Hence
+\[ n(\overline{H} \times \overline{H}) \subseteq \overline{H}. \]
+
+$\ast$ Set of all left cosets set $G/H$. We have a
+natural map or projection $\pi : G \rightarrow G/H$.
+\[ x \mapsto xH \]
+
+\begin{remark}
+If $G$ is a topological group, we will topologize
+$G/H$ assuming $H$ is closed. Construct
+\[ \tau_{G/H} = \{ O \subseteq G/H \mid \pi^{-1}(O) \in \tau_G \} \] i.e.
+$O$ is open if and only if $\pi^{-1}(O)$ is open in $G$
+\end{remark}
+
+% --- Page 4 ---
+which ensures $\pi$ is a continuous map, moreover
+a quotient map where $\pi$ is surjective by construct-
+ion.
+
+\begin{lemma}
+$G/H$ is a $T_1$-space, and $\pi$ is open.
+\end{lemma}
+
+\begin{proof}
+Since $H$ is closed then $\alpha H$ is closed by
+homeomorphism. Observe $G - \alpha H$ is open in $G$.
+Let $\tilde{\alpha} = \alpha H \in G/H$. Observe $\pi^{-1}(G/H - \tilde{\alpha})
+= G - \alpha H$. Hence $\tilde{\alpha}$ is closed, $G/H$ is $T_1$.
+We want to show $\pi$ is an open map.
+Let $O$ be an open map in $G/H$ then
+$\pi(O)$ is open $G/H$ iff $\pi^{-1}(\pi(O))$ is
+open in $G$. Now $OH = \pi^{-1}(\pi(O))$ and
+$OH = \bigcup Oh$. Hence $OH$ is open. So
+\end{proof}
+
+% --- Page 5 ---
+$\pi^{-1}(\pi(O))$ is open which implies $\pi(CO)$ is open.
+
+\begin{lemma}
+$G/H$ is a $T_2$ space.
+\end{lemma}
+
+\begin{proof}
+Consider $xH \neq yH$ in $G/H$.
+
+Now $x \in xH$ and $x \in G \setminus yH$ which is open as $H$ is closed and $yH$ is closed. Now, let $V$ be a nbhd of $x$ st $x \in V \alpha \subset G \setminus yH$.
+
+Observe $V \alpha \cap yH = \emptyset$ implies $V \alpha H \cap yH = \emptyset$ otherwise $v h_1 = g h_2$ and $v \alpha = g h_2 h_1^{-1}$ implying $V \alpha \cap yH \neq \emptyset$. Now, we can find a nbhd of $V_1$ st $V_1^{-1} V_1 \subset V$ therefore $V_1^{-1} V_1 \alpha H \cap yH = \emptyset$ this implies $V_1 \alpha H \cap V_1 yH = \emptyset$, which is $\pi(V_1 \alpha) \cap \pi(V_1 y) = \emptyset$ and by previous lemma $\pi(V_1 \alpha)$ and $\pi(V_1 y)$ are open sets and $xH \in \pi(V_1 \alpha)$ and $yH \in \pi(V_1 y)$. Hence
+\end{proof}
+
+% --- Page 6 ---
+$G \backslash H$ is $T_2$
+
+\begin{remark}
+We call $G \backslash H$ the quotient space where $H$ is a closed subgroup of $H$, has equipped with quotient topology.
+\end{remark}
+
+\begin{lemma}
+If $G$ is a topological group, $H$ is normal subgroup, the quotient topology equipped on the quotient group $G \backslash H$ is a topological group.
+\end{lemma}
+
+\begin{proof}
+We want to show $\chi_1 : G \backslash H \times G \backslash H \rightarrow G \backslash H$
+\[
+(x_1, y_1) \mapsto x_1 y_1^{-1}
+\]
+is continuous.
+
+And $\chi : G \times G \rightarrow G$
+\[
+(x, y) \mapsto xy^{-1}
+\]
+is continuous
+\end{proof}
+
+% --- Page 7 ---
+\[
+\begin{array}{ccc}
+G \times G & \xrightarrow{\pi \times \pi} & G \backslash H \times G \backslash H \\
+\downarrow \pi & & \downarrow \psi_1 \\
+G & \xrightarrow{\psi} & G \backslash H
+\end{array}
+\]
+
+Observe $\psi_1 (\pi \times \pi) = \psi \pi$ and $\pi, \psi$ are continuous. Hence $\psi_1 (\pi \times \pi)$ are continuous.
+
+Let $O_1$ be an open subset of $G/H$ then
+
+$\psi_1 (\pi \times \pi)^{-1}(O_1)$ is open. As $\pi \times \pi$ is an open map, $\pi \times \pi (\pi \times \pi)^{-1} \psi_1^{-1}(O_1)$ is open. Hence $\psi_1^{-1}(O_1)$ is open.
+
+\[
+\square
+\]
+
+\begin{lemma}
+Let $G$ be a topological group, and $H$ be a subgroup.
+
+(a) If $G$ is cpt then $H$ and $G/H$ are both cpt.
+
+(b) If $G$ is locally cpt then $H$ and $G/H$ have both locally cpt.
+\end{lemma}
+
+% --- Page 8 ---
+\begin{proof}
+
+(a) $H$ is a closed subset of a cpt set and $G/H = \pi(G)$ where $G$ is cpt and $\pi$ is continuous mapping. Hence a continuous map of cpt set is cpt.
+
+(b) A closed subset of a locally cpt set is locally cpt.
+
+Let $S$ be locally cpt, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \cap S$, there exists a nbhd of $p$ in $S$ $U_p$ st. $U_p$ is cpt. Observe for $p \in T$ there exists an open set $T \cap U_p$ in $T$ such that $T \cap U_p = T \cap \overline{U_p}$ is cpt as $T \cap \overline{U_p}$ is closed subset of $U_p$ which is cpt.
+
+Hence $H$ is locally cpt.
+
+Goal: $G/H$ is locally cpt.
+
+\end{proof}
+
+% --- Page 9 ---
+For $q_{i} \in G \backslash H$ and nbd of $q_{i}$. Let
+$U = \pi^{-1}(U_{i})$, and let $x \in G$ st. $\pi(x) = q_{i}$.
+
+As $G$ is locally cpt we get a nbd of $x$ $\overline{O}$ st.
+$\overline{O}$ is cpt and $\overline{O} \subseteq U$ by proposition given
+below. Then we have $\pi(\overline{O}) \subseteq \pi(U) = U_{i}$.
+If $O_{i} = \pi(O)$ a nbd of $q_{i}$. And $\pi(\overline{O})$
+is a continuous image of cpt set hence we get
+$\pi(\overline{O})$ is cpt. Since $G/H$ is $T_{2}$-space
+$\pi(\overline{O})$ is closed which implies
+
+$O \subseteq \overline{O} \Rightarrow O_{i} \subseteq \pi(\overline{O})$ and
+$\overline{O_{i}} \subseteq \pi(\overline{O}) = \pi(\overline{O})$ which is cpt,
+so is $\overline{O_{i}}$. Thus $O_{i}$ is a nbd of $q_{i}$ such that
+$\overline{O_{i}}$ is cpt. It follows $G/H$ is locally cpt.
+
+Corollary
+
+If $G$ is locally cpt then $G/H$ is normal or $T_{4}$.
+
+% --- Page 10 ---
+\begin{proposition}
+For any topological group $G$, let $U$ be a nbhd of $e$, there exists a nbhd of $e$ $V$ st. $V \subseteq U$.
+\begin{proof}
+By property 5) and 6) we know that for every nbhd of $e$ $U$ we have a symmetric nbhd of $e$ st. $V^2 \subseteq U$. Now $x \in \overline{V} = \bigcap_{w \in V} wV$ where $V^2$ is set of all nbhd of $e$, this implies $x \in \overline{V} \subseteq V^2 \subseteq U$.
+\end{proof}
+\end{proposition}
+
+\end{document}
