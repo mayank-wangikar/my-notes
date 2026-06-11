@@ -34,7 +34,6 @@ is a vector space basis element.
 * An endomorphism $\alpha$ of $\mathbb{C}^n$ is defined as
 \[ \alpha \overline{e_i} = \sum_{j=1}^n a_{ji} \overline{e_j} \]
 where $\alpha = (a_{ij}) \in M_n(\mathbb{C})$.
-
 (We can think of $\alpha \overline{e_i}$ as the $i^{th}$ column
 vector.)
 
@@ -48,14 +47,14 @@ and construct $(c_{ij})$ where
 
 % --- Page 2 ---
 \begin{lemma}
-\label{lem:mn_c_isomorphic_cn2}
+\label{lem:isomorphism}
 $M_n(\mathbb{C}) \cong \mathbb{C}^{n^2}$ as vector spaces.
 \end{lemma}
 
 \begin{proof}
 Construct the function
 \[
-\tilde{f} : M_n(\mathbb{C}) \xrightarrow{} \mathbb{C}^{n^2}
+f: M_n(\mathbb{C}) \to \mathbb{C}^{n^2}
 \]
 \[
 (a_{ij}) \mapsto (b_{ij})
@@ -64,32 +63,27 @@ where $b_{i+(j-1)n} = a_{ij}$.
 
 Observe as $j$ goes from $1$ to $n$, $(j-1)n$ goes from $0$ to $(n-1)n$ and as $i$ goes from $1$ to $n$ as well, we get $i+(j-1)n$ go from $1$ to $n^2$.
 
-Observe $\tilde{f}$ is surjective by construction and if $a_{ij} \neq a_{i'j'}$ then $b_{i+(j-1)n} \neq b_{i'+(j'-1)n}$ hence $\tilde{f}$ is bijective.
+Observe $f$ is surjective by construction and if $a_{ij} \neq a_{i'j'}$ then $b_{i+(j-1)n} \neq b_{i'+(j'-1)n}$ hence $f$ is bijective.
 
-Observe $\tilde{f}$ is linear hence $M_n(\mathbb{C}) \cong \mathbb{C}^{n^2}$.
+Observe $f$ is linear hence $M_n(\mathbb{C}) \cong \mathbb{C}^{n^2}$.
 \end{proof}
 
 % --- Page 3 ---
 \begin{remark}
 Observe we can equip $M_n(\mathbb{C})$ with a topology by ensuring the given map above to be a homeomorphism. By constructing
-\[
-\tau_{M_n(\mathbb{C})} = \{ f^{-1}(U) \mid U \in \tau_{\mathbb{C}^{n^2}} \}
-\]
+\[ \mathcal{T}_{M_n(\mathbb{C})} = \{ f^{-1}(CU) \mid U \in \mathcal{T}_{\mathbb{C}^{n^2}} \} \]
 \end{remark}
 
 \begin{lemma}
 Let $T$ be any topological space,
-\[
-\phi: T \rightarrow M_n(\mathbb{C})
-\]
-$\phi$ is continuous if and only if $\pi_{ij} \circ \phi$ is continuous.
+\[ \phi: T \rightarrow M_n(\mathbb{C}) \]
+$\phi$ is continuous if and only if $\pi_{ij} \circ \phi$ is continuous
 \begin{proof}
 Only if condition is trivial.
 
 If condition:
-\[
-\pi_{ij} \circ \phi: T \rightarrow \mathbb{C} \text{ is continuous.}
-\]
+\[ \pi_{ij} \circ \phi: T \rightarrow \mathbb{C} \] is continuous.
+
 Now $\prod_{1 \leq i,j \leq n} \pi_{ij} \circ \phi: T \rightarrow \mathbb{C}^{n^2}$ is continuous by product topology (or box topology as $\mathbb{C}^{n^2}$ is finite Cartesian product).
 \end{proof}
 \end{lemma}
@@ -114,22 +108,28 @@ Product of two matrices is continuous
 
 \[
 \begin{array}{ccc}
- & f \times f & \\
-\mathbb{C}^{n^2} \times \mathbb{C}^{n^2} & \xrightarrow{p} & \mathbb{C}^{n^2}
+M_n(\mathbb{C}) \times M_n(\mathbb{C}) & \xrightarrow{f \times f} & \mathbb{C}^{n^2} \times \mathbb{C}^{n^2} \\
+\downarrow{q} & & \downarrow{p} \\
+M_n(\mathbb{C}) & \xrightarrow{f} & \mathbb{C}^{n^2}
 \end{array}
 \]
 
-where \( q: M_n(\mathbb{C}) \times M_n(\mathbb{C}) \rightarrow M_n(\mathbb{C}) \) is matrix multiplication. And \( p \) is a polynomial
-
+where $q: M_n(\mathbb{C}) \times M_n(\mathbb{C}) \rightarrow M_n(\mathbb{C})$,
 \[
-p((b_{ij}), (b'_{ij})) = (c_{ij}) \text{ where }
+(\sigma, \tau) \mapsto \sigma \tau
 \]
-
+is matrix multiplication. And $p$ is a polynomial
+\[
+p((b_{ij}), (b'_{ij})) = (c_{ij})
+\]
+where
 \[
 c_{ij} = \sum_{k=1}^n b_{ik} b'_{kj}.
 \]
-
-Hence \( p \) is continuous. Therefore for \( q = p \circ f \times f \) is continuous. For any open set in \( M_n(\mathbb{C}) \) \( U \), we express \( U = f^{-1}(O) \) for some open set \( O \) in
+Hence $p$ is continuous. Therefore for $q = p \circ (f \times f)$ is continuous. For any open set in $M_n(\mathbb{C})$ $U$, we express
+\[
+U = f^{-1}(O) \text{ for some open set } O \text{ in }
+\]
 \end{proof}
 
 % --- Page 5 ---
@@ -149,24 +149,27 @@ Transpose and complex conjugate are homeomorphism.
 \end{lemma}
 
 \begin{proof}
-If \( h: M_n(\mathbb{C}) \to M_n(\mathbb{C}) \),
+If \( h: M_n(\mathbb{C}) \rightarrow M_n(\mathbb{C}) \),
 \[
 \begin{array}{ccc}
-A & \xrightarrow{h} & {}^t A
+A & \xrightarrow{h} & ^t A \\
 \end{array}
 \]
-we can construct \( r: \mathbb{C}^{n^2} \to \mathbb{C}^{n^2} \) which is a rearrangement of indices such that
+we can construct \( r: \mathbb{C}^{n^2} \rightarrow \mathbb{C}^{n^2} \) which
+is a rearrangement of indices such that
 \[
 b_{i+j \cdot n} = b_{j+i \cdot n}
 \]
-which is a homeomorphism. Hence, \( h = f^{-1} \circ r \circ f \) is a homeomorphism.
+which is a homeomorphism.
+Hence, \( h = f^{-1} r f \) is a homeomorphism.
 
-If \( k: M_n(\mathbb{C}) \to M_n(\mathbb{C}) \) is homeomorphic
+If \( k: M_n(\mathbb{C}) \rightarrow M_n(\mathbb{C}) \) is homeomorphic
 \[
 \begin{array}{ccc}
-A & \xrightarrow{k} & \overline{A}
+A & \xrightarrow{k} & \overline{A} \\
 \end{array}
 \]
+\end{proof}
 
 % --- Page 6 ---
 as \( k_{ij} \) is homeomorphic for \( 1 \leq i, j \leq n \).
@@ -187,7 +190,7 @@ A necessary and sufficient condition for \( \sigma \) to be regular is \( \det \
 If \( \sigma \) is a regular matrix
 \begin{enumerate}
 \item iff \( \sigma^{-1} \) its reciprocal endomorphism exists
-\item then \( ^t(\sigma^{-1}) = (^t \sigma)^{-1} \), \( (\bar{\sigma})^{-1} = (\sigma^{-1})^{-} \)
+\item then \( ^t (\sigma^{-1}) = (^t \sigma)^{-1} \), \( (\bar{\sigma})^{-1} = (\sigma^{-1})^{-1} \)
 \end{enumerate}
 \end{remark}
 
@@ -196,15 +199,21 @@ If \( \sigma \) is a regular matrix
 If $\sigma, \tau$ are regular matrices then $\sigma \tau$ are regular matrices.
 
 $*$ $\det: M_n(\mathbb{C}) \rightarrow \mathbb{C}$ can be expressed as
-\[ M_n(\mathbb{C}) \xrightarrow{\det} \mathbb{C} \]
-\[ \uparrow f \]
-\[ \mathbb{C}^{n^2} \]
+\[
+\begin{array}{ccc}
+M_n(\mathbb{C}) & \xrightarrow{\det} & \mathbb{C} \\
+\downarrow{f} & & \\
+\mathbb{C}^{n^2} & \xrightarrow{p} & \mathbb{C}
+\end{array}
+\]
 
 $p$ is some polynomial function of $n^2$ variables, which is continuous. We know $f$ is continuous. Hence, $\det$ map is continuous.
 
 \begin{remark}
-\[ GL_n(\mathbb{C}) = \{ \sigma \in M_n(\mathbb{C}) \mid \det \sigma \neq 0 \} \]
-\[ = M_n(\mathbb{C}) \setminus \det^{-1} \{0\} \]
+$GL_n(\mathbb{C}) = \{\sigma \in M_n(\mathbb{C}) \mid \det \sigma \neq 0 \}$
+\[
+= M_n(\mathbb{C}) \setminus \det^{-1}\{0\}
+\]
 is a group and an open subset as $\det$ is a continuous map.
 \end{remark}
 \end{remark}
@@ -218,26 +227,24 @@ Moreover, it's a homeomorphism.
 
 \begin{remark}
 If $\sigma \in GL_n(\mathbb{C})$, we define $\sigma^* = (^t \sigma)^{-1}$.
-Then we have $(\sigma \tau)^* = \sigma^* \tau^*$. Hence
+Then we have $( \sigma \tau )^* = \sigma^* \tau^*$. Hence
 $\sigma \mapsto \sigma^*$ is a homeomorphism, and an
 automorphism of order 2 of $GL_n(\mathbb{C})$.
 \end{remark}
 
 % --- Page 9 ---
 \begin{definition}
-$\mathrm{O}_n(\mathbb{C}) = \left\{ \sigma \in \mathrm{GL}_n(\mathbb{C}) \mid \sigma^* = \sigma \right\}$
+$\mathrm{O}_n(\mathbb{C}) = \left\{ \sigma \in \mathrm{GL}_n(\mathbb{C}) \mid \sigma^* = \sigma^{-1} \right\}$
 
-is set of \underline{orthogonal matrices}. If $\sigma = \sigma^*$ then $\sigma$ is \underline{complex orthogonal} and if $\sigma = \sigma^* = \bar{\sigma}$ then real orthogonal.
+is set of orthogonal matrices. If $\sigma = \sigma^*$ then $\sigma$ is complex orthogonal and if $\sigma = \sigma^* = \bar{\sigma}$ then real orthogonal.
 
-$\mathrm{O}_n(\mathbb{C}) = \left\{ \sigma \in \mathrm{GL}_n(\mathbb{C}) \mid \sigma^* = \bar{\sigma} \right\}$
+$\mathrm{U}_n(\mathbb{C}) = \left\{ \sigma \in \mathrm{GL}_n(\mathbb{C}) \mid \sigma^* = \bar{\sigma}^{-1} \right\}$
 
-is set of all \underline{unitary matrices}.
+is set of all unitary matrices.
 
-Note $\mathrm{U}_n(\mathbb{C})$ or $\mathrm{O}_n(\mathbb{C})$ are non empty as $\varepsilon \in \mathrm{U}_n(\mathbb{C})$ and $\varepsilon \in \mathrm{O}_n(\mathbb{C})$.
+Note $\mathrm{U}_n(\mathbb{C})$ or $\mathrm{O}_n(\mathbb{C})$ are non empty as $e \in \mathrm{U}_n(\mathbb{C})$ and $e \in \mathrm{O}_n(\mathbb{C})$.
 
-Notation: $\mathrm{U}_n(\mathbb{C}) = (\mathrm{UC}_n)$ and $\mathrm{O}_n(\mathbb{R}) = \mathrm{OC}_n$.
-
-Don't be confused!
+Notation: $\mathrm{U}_n(\mathbb{C}) = (\mathrm{U}(n))$ and $\mathrm{O}_n(\mathbb{R}) = \mathrm{O}(n)$. Don't be confused!
 \end{definition}
 
 % --- Page 10 ---
@@ -249,7 +256,12 @@ If $f, g$ are continuous mapping from topological space $X$ to Hausdorff space $
 \begin{proof}
 Consider $ \{x \mid f(x) \neq g(x) \} $. Now
 \[ x \in \{x \in X \mid f(x) \neq g(x) \} \] implies $f(x) \neq g(x)$
-in $Y$. By Hausdorff property there exists open set $U_1$ and $U_2$ such that $f(x) \in U_1$ and $g(x) \in U_2$ and $U_1 \cap U_2 = \emptyset$. Now $f^{-1}(U_1)$ and $g^{-1}(U_2)$ are open. Let $V = f^{-1}(U_1) \cap g^{-1}(U_2)$ be a neighborhood of $x$. For any $y \in V$ $f(y) \neq g(y)$ otherwise $U_1 \cap U_2 \neq \emptyset$. Hence $x \in V \subseteq \{x \mid f(x) \neq g(x) \}$ is open. Hence $\{x \mid f(x) = g(x) \}$ is closed.
+in $Y$. By Hausdorff property there exists open set $U_1$ and $U_2$ such that $f(x) \in U_1$ and $g(x) \in U_2$ and $U_1 \cap U_2 = \emptyset$.
+Now $f^{-1}(U_1)$ and $g^{-1}(U_2)$ are open.
+Let $V = f^{-1}(U_1) \cap g^{-1}(U_2)$ be a neighborhood of $x$.
+For any $y \in V$ $f(y) \neq g(y)$ otherwise
+$U_1 \cap U_2 \neq \emptyset$. Hence $x \in V \subseteq \{x \mid f(x) \neq g(x)\}$
+is open. Hence $\{x \mid f(x) = g(x)\}$ is closed.
 \end{proof}
 
 % --- Page 11 ---
@@ -259,10 +271,9 @@ $O_n(\mathbb{C})$, $U(n)$, $O(n)$ are closed subgroups of $GL_n(\mathbb{C})$.
 \begin{proof}
 Observe mapping $\sigma \mapsto \sigma^*$, $\sigma \mapsto \overline{\sigma}$ and identity mapping are continuous.
 By the above lemma, as $\mathbb{R}$ is $T_2$ space.
-The sets $U(n) = \{\sigma \mid \overline{\sigma} = \sigma^*\}$ and $O_n(\mathbb{C}) = \{\sigma \mid \sigma = \sigma^*\}$ are closed sets.
-Observe $GL_n(\mathbb{R}) = \{\sigma \mid \overline{\sigma} = \sigma\}$ is also closed.
-Hence $U(n)$ and $O(n) = O_n(\mathbb{C}) \cap GL_n(\mathbb{R})$ is closed.
-
+The sets $U(n) = \{\sigma \mid \overline{\sigma} = \sigma^*\}$ and $O_n(\mathbb{C}) = \{\sigma \mid \sigma = \sigma^*\}$ are closed sets. Observe $GL_n(\mathbb{R}) = \{\sigma \mid \sigma = \overline{\sigma}\}$ is also closed. Hence $U(n)$ and
+\[ O(n) = O_n(\mathbb{C}) \cap GL_n(\mathbb{R}) \]
+is closed.
 As all the given sets are non-empty by subgroup test, we can show these are subgroups.
 \end{proof}
 \end{proposition}
@@ -273,7 +284,7 @@ As all the given sets are non-empty by subgroup test, we can show these are subg
 \]
 is special linear group.
 
-As $\epsilon \in SL_n(\mathbb{C})$, and by subgroup tests we can show $SL_n(\mathbb{C})$ is a subgroup of $GL_n(\mathbb{C})$. Moreover, $SL_n(\mathbb{C}) = \det^{-1}\{1\}$ implies $SL_n(\mathbb{C})$ is a closed subgroup.
+As $\varepsilon \in SL_n(\mathbb{C})$, and by subgroup tests we can show $SL_n(\mathbb{C})$ is a subgroup of $GL_n(\mathbb{C})$. Moreover, $SL_n(\mathbb{C}) = \det^{-1}\{1\}$ implies $SL_n(\mathbb{C})$ is a closed subgroup.
 
 \begin{remark}
 \[
@@ -302,13 +313,17 @@ Goal: $U(n)$ is homeomorphic to a closed and bounded set of $\mathbb{C}^{n^2}$.
 Observe $GL_n(\mathbb{C})$ is a open subgroup of $M_n(\mathbb{C})$ hence it is also a closed subgroup according to a previous lemma. Observe $U(n)$ is closed in $GL_n(\mathbb{C})$ and $GL_n(\mathbb{C})$ is closed in $M_n(\mathbb{C})$ implies $U(n)$ is closed in $GL_n(\mathbb{C})$.
 
 Now for $\sigma = (a_{ij}) \in U(n)$ iff and only if
-\[ ^t \overline{\sigma} \sigma = \varepsilon \iff \sum_{k} a_{ki} \overline{a_{kj}} = \delta_{ij} \]
+\[ ^t \overline{\sigma} \sigma = \epsilon \iff \sum_{k} a_{ki} \overline{a_{kj}} = \delta_{ij} \]
 \end{proof}
 
 % --- Page 14 ---
-implies $\sum_{k=1}^n |a_{ki}|^2 = 1$ which means for $i^{th}$ column vector, the absolute sum is 1. This implies for any $1 \leq i, j \leq n$ $|a_{ij}| \leq 1$.
+implies $\sum_{k=1}^n |a_{ki}|^2 = 1$ which means for $i^{th}$ column vector, the absolute sum is 1.
 
-Now in $(C^{n^2}, \|\cdot\|_1)$, $v = (v_k)_{k=1}^{n^2}$, $|v_k| \leq 1$ for $1 \leq k \leq n^2$ we define $\|v\|_1 = \max_{1 \leq k \leq n^2} |v_k|$. Observe $f: M_n(C) \rightarrow C^{n^2}$ as homeomorphism $f(UC_n)$ is closed and bounded, and compact. This implies $UC_n$ is compact.
+This implies for any $1 \leq i, j \leq n$ $|a_{ij}| \leq 1$.
+
+Now in $(C^{n^2}, \|\cdot\|_1)$, $v = (v_k)_{k=1}^{n^2}$, $|v_k| \leq 1$ for $1 \leq k \leq n^2$ we define $\|v\|_1 = \max_{1 \leq k \leq n^2} |v_k|$.
+
+Observe $f: M_n(C) \rightarrow C^{n^2}$ as homeomorphism $f(UC_n)$ is closed and bounded, and compact. This implies $UC_n$ is compact.
 
 $\square$
 
