@@ -1,10 +1,11 @@
 name: Compile and Publish Notes
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'latex/**/*.tex'
-
+      
 jobs:
   publish:
     runs-on: ubuntu-latest
