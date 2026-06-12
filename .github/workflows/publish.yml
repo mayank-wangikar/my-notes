@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /usr/share/texlive
-          key: texlive-base-extra-fonts-v1
+          key: texlive-full-v2
 
       - name: Install dependencies
         if: steps.latex-cache.outputs.cache-hit != 'true'
@@ -28,6 +28,9 @@ jobs:
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-science
+
+      - name: Add LaTeX to PATH
+        run: echo "/usr/share/texlive/bin/x86_64-linux" >> $GITHUB_PATH
 
       - name: Compile all .tex files to PDF
         run: |
