@@ -27,23 +27,20 @@
 
 % --- Page 1 ---
 \begin{itemize}
-    \item \textbf{Modules} $(M, R, +)$
-
-    \begin{proof}
-        Verify the axioms.
-    \end{proof}
+    \item \textbf{Modules $(M, R, +)$}
+    \begin{itemize}
+        \item Verify the axioms
+    \end{itemize}
 
     \item \textbf{Submodules}
-
-    \begin{proof}
-        Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$).
-    \end{proof}
+    \begin{itemize}
+        \item Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$.)
+    \end{itemize}
 
     \item \textbf{Homomorphism}
-
-    \begin{proof}
-        Verify the axioms.
-    \end{proof}
+    \begin{itemize}
+        \item Verify the axioms
+    \end{itemize}
 \end{itemize}
 
 % --- Page 2 ---
@@ -51,15 +48,19 @@
 
 % --- Page 3 ---
 \begin{example}\label{ex:modules}
-    \begin{enumerate}
-        \item Vector space $\mathbb{C}$ (Ring over module is a field).
-        \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
-        \[
-        f(x) \cdot v := f(T)(v).
-        \]
-        Note: $(V, T) \longmapsto F[x]$ module.
-        For $\longmapsto$ we define $T(x) := x \cdot v$.
-    \end{enumerate}
+\textbf{Modules}
+
+\begin{itemize}
+    \item Vector space (a ring over module is a field).
+
+    \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
+    \[
+    f(x) \cdot v := f(T)(v).
+    \]
+    Note: $(V, T) \mapsto F[x]$ module.
+
+    For $\mapsto$ we define $T(x) := x \cdot v$.
+\end{itemize}
 \end{example}
 
 % --- Page 4 ---
@@ -68,7 +69,7 @@
 
     \item In $\mathbb{Z}$-modules say $M$
     \begin{definition}\label{def:submodule_z}
-        $N$ is a submodule iff $(N, +) \lessdot (CM, +)$.
+        $N$ is a submodule iff $(N, +) \leq (CM, +)$.
     \end{definition}
 
     \item In $R$ is a $R$-module
@@ -90,26 +91,29 @@
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\ \hline
-$(V, \mathbb{F})$ & $\dim V < +\infty$ & $\dim V = \{0, 1\}$ \\ \hline
-$G$ is abelian group treated like $\mathbb{Z}$-module & f.g. as group & cyclic as group \\ \hline
-$R$ comm ring and $M \triangleleft R$, $M$ is $R$-module & f.g. as an ideal & principal ideal \\ \hline
+$(V, \mathcal{F})$ & $\dim V < +\infty$ & $\dim V = \{0, 1\}$ \\ \hline
+$G$ is abelian group & f.g as & cyclic as \\
+treated like $\mathbb{Z}$-module & group & group \\ \hline
+$R$ comm ring and & f.g as & principle \\
+$M \triangleleft R$ & an ideal & ideal \\
+$M$ is $R$-module & & \\ \hline
 \end{tabular}
 
 % --- Page 6 ---
 \begin{itemize}
-    \item \begin{definition}\label{def:module_homomorphism}
-        A \underline{module homomorphism} is a structure-preserving map between modules.
-    \end{definition}
+    \item \textbf{Module homomorphisms}
 
-    \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphisms $\leftrightarrow$ module homomorphisms.
+    \begin{itemize}
+        \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphisms $\leftrightarrow$ module homomorphisms.
 
-    \item \begin{remark}\label{rem:vector_fields}
-        For vector fields, linear transformations $\leftrightarrow$ module homomorphisms.
-    \end{remark}
+        \item For vector fields, linear transformations $\leftrightarrow$ module homomorphisms.
 
-    \item \begin{remark}\label{rem:ring_homomorphism}
-        For a ring $R$, $\Theta: M \to N$ where $M = N = R$ and $\Theta(rs) = r\Theta(s)$ is \textbf{not} a ring homomorphism but is a module homomorphism.
-    \end{remark}
+        \item For ring $R$, $\Theta: M \rightarrow N$ where $M = N = R$ and
+        \[
+        \Theta(rs) = r\Theta(s)
+        \]
+        is \textbf{not} a ring homomorphism but is a module homomorphism.
+    \end{itemize}
 
     \item Isomorphism theorems hold for modules.
 \end{itemize}
