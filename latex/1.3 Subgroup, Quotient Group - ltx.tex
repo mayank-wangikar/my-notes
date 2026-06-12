@@ -4,17 +4,21 @@
 \usepackage{parskip}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usepackage{cleveref}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{corollary}{Corollary}[section]
+
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}{Example}[section]
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
+
 \begin{document}
 
 \begin{center}
@@ -23,7 +27,6 @@
 {\normalsize\today}
 \end{center}
 \vspace{0.5cm}
-
 
 % --- Page 1 ---
 \begin{definition}\label{def:subgroup_topological_group}
@@ -41,7 +44,6 @@ A normal subgroup $N$ of topological group $G$ if $N$ is a normal subgroup of ab
 % --- Page 2 ---
 \begin{proposition}\label{prop:closure_subgroup}
 Let $G$ be a topological group. Let $H$ be a subgroup of abstract group $G$.
-
 \begin{enumerate}[(i)]
 \item $\overline{H}$ is a subgroup of top. group $G$.
 \item If $H$ is normal subgroup of $G$ then $\overline{H}$ is normal.
@@ -55,8 +57,6 @@ For $x, y \in \overline{H}$ we want to show $xy^{-1} \in \overline{H}$. We know 
 \end{proof}
 
 % --- Page 3 ---
----
-
 We construct a mapping
 \[
 n \colon G \times G \to G, \quad (x, y) \mapsto x y x^{-1}
@@ -86,8 +86,6 @@ i.e., $O$ is open if and only if $\pi^{-1}(O)$ is open in $G$.
 \end{remark}
 
 % --- Page 4 ---
----
-
 which ensures $\pi$ is a continuous map, moreover a quotient map where $\pi$ is surjective by construction.
 
 \begin{lemma}\label{lem:quotient_space}
@@ -109,8 +107,6 @@ Hence $OH$ is open.
 \end{proof}
 
 % --- Page 5 ---
----
-
 $\pi^{-1}(\pi(O))$ is open which implies $\pi(O)$ is open.
 
 \begin{lemma}\label{lem:G/H_T2}
@@ -183,9 +179,9 @@ Let $G$ be a topological group, and $H$ be a subgroup.
 
     \item[(b)] A closed subset of a locally compact set is locally compact.
 
-    Let $S$ be locally compact, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \cap S$, there exists a neighborhood of $p$ in $S$, $\overline{U_p}$ such that $\overline{U_p}$ is compact. Observe for $p \in T$, there exists an open set $T \cap U_p$ in $T$ such that $\overline{T \cap U_p} = \overline{T} \cap \overline{U_p}$ is compact as $\overline{T \cap U_p}$ is a closed subset of $\overline{U_p}$ which is compact. Hence $H$ is locally compact.
+    Let $S$ be locally compact, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \cap S$, there exists a neighborhood of $p in S$, $\overline{U_p}$ such that $\overline{U_p}$ is compact. Observe for $p \in T$, there exists an open set $T \cap U_p$ in $T$ such that $\overline{T \cap U_p} = \overline{T} \cap \overline{U_p}$ is compact as $\overline{T \cap U_p}$ is a closed subset of $\overline{U_p}$ which is compact. Hence $H$ is locally compact.
 
-    Goal: $G/H$ is locally compact.
+    \textbf{Goal:} $G/H$ is locally compact.
 \end{enumerate}
 \end{proof}
 
