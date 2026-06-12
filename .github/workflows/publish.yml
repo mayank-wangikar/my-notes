@@ -50,12 +50,50 @@ jobs:
           mkdir -p website/pdfs
           cp compiled_pdfs/*.pdf website/pdfs/ 2>/dev/null || true
 
+      - name: Update manifest
+        run: |
+          python3 - <<'EOF'
+          import json, pathlib
+
+          manifest_path = pathlib.Path("website/notes-manifest.json")
+          
+          if manifest_path.exists():
+              state = json.loads(manifest_path.read_text())
+          else:
+              state = {"folders": [], "uncategorized": []}
+          
+          state.setdefault("folders", [])
+          state.setdefault("uncategorized", [])
+
+          def collect_names(folders):
+              names = set()
+              for f in folders:
+                  for file in f.get("files", []):
+                      names.add(file["name"])
+                  names |= collect_names(f.get("subfolders", []))
+              return names
+
+          known = collect_names(state["folders"])
+          known |= {f["name"] for f in state["uncategorized"]}
+
+          for pdf in sorted(pathlib.Path("website/pdfs").glob("*.pdf")):
+              if pdf.name not in known:
+                  state["uncategorized"].append({
+                      "name": pdf.name,
+                      "title": pdf.stem.replace(" - ltx", "").replace(" - LTX", ""),
+                      "path": f"pdfs/{pdf.name}"
+                  })
+                  print(f"Added: {pdf.name}")
+
+          manifest_path.write_text(json.dumps(state, indent=2))
+          EOF
+
       - name: Push to website
         run: |
           cd website
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add pdfs/
+          git add pdfs/ notes-manifest.json
           git diff --staged --quiet || git commit -m "Update compiled PDFs"
           git pull --rebase
           git push
