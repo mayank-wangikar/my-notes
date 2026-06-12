@@ -4,17 +4,21 @@
 \usepackage{parskip}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usepackage{cleveref}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{corollary}{Corollary}[section]
+
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}{Example}[section]
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
+
 \begin{document}
 
 \begin{center}
@@ -23,7 +27,6 @@
 {\normalsize\today}
 \end{center}
 \vspace{0.5cm}
-
 
 % --- Page 1 ---
 \textbf{Matrix Group}
@@ -38,7 +41,7 @@ An \textit{endomorphism} $\alpha$ of $\mathbb{C}^n$ is defined as
 \alpha \overline{e}_i = \sum_{j=1}^n a_{ji} \overline{e}_j
 \]
 where $\alpha = (a_{ij}) \in M_n(\mathbb{C})$.
-(We can think of $\alpha \overline{e}_i$ as the $i^{\text{th}}$ column vector.)
+(We can think of $\alpha \overline{e}_i as the $i^{\text{th}}$ column vector.)
 \end{definition}
 
 We use $\alpha$ for a matrix as well as for the endomorphism.
@@ -129,8 +132,6 @@ For any open set $U$ in $M_n(\mathbb{C})$, we can express $U = f^{-1}(O)$ for so
 \end{proof}
 
 % --- Page 5 ---
----
-
 \[
 q^{-1}(U) = q^{-1}(f^{-1}(O)) = (f \circ q)^{-1}(O)
 \]
@@ -139,7 +140,7 @@ which is open as \( f \circ q \) is continuous.
 \square
 \]
 
-**Notation:** \( {}^t\!A \) is the transpose of a matrix and \( \overline{A} \) is the complex conjugate of a matrix.
+\textbf{Notation:} \( {}^t\!A \) is the transpose of a matrix and \( \overline{A} \) is the complex conjugate of a matrix.
 
 \begin{lemma}
 Transpose and complex conjugate are homeomorphisms.
@@ -163,8 +164,6 @@ A \mapsto \overline{A},
 \end{proof}
 
 % --- Page 6 ---
----
-
 \[
 \text{as } k_{ij} \text{ is homeomorphic for } 1 \leq i,j \leq n.
 \]
@@ -196,8 +195,6 @@ If \( \sigma \) is a regular matrix, then:
     \item then \( {}^{t}(\sigma^{-1}) = (^{t}\sigma)^{-1} \), \( (\overline{\sigma})^{-1} = (\overline{\sigma^{-1}}) \).
 \end{enumerate}
 \end{remark}
-
----
 
 % --- Page 7 ---
 \begin{remark}
@@ -263,20 +260,20 @@ Notation: $\mathrm{U}_n(\mathbb{C}) = \mathrm{U}(n)$ and $\mathrm{O}_n(\mathbb{R
 % --- Page 10 ---
 \begin{lemma}\label{lem:equality_set_closed}
 If $f, g$ are continuous mappings from topological space $X$ to Hausdorff space $Y$, then
-$\\{ x \in X \mid f(x) = g(x) \\}$ is closed.
+$\{ x \in X \mid f(x) = g(x) \}$ is closed.
 \end{lemma}
 
 \begin{proof}
-Consider $\\{ x \mid f(x) \neq g(x) \\}$. Now
-$x \in \\{ x \in X \mid f(x) \neq g(x) \\}$ implies $f(x) \neq g(x)$
+Consider $\{ x \mid f(x) \neq g(x) \}$. Now
+$x \in \{ x \in X \mid f(x) \neq g(x) \}$ implies $f(x) \neq g(x)$
 in $Y$. By Hausdorff property there exists open
 set $U_1$ and $U_2$ such that $f(x) \in U_1$ and
 $g(x) \in U_2$ and $U_1 \cap U_2 = \emptyset$.
 Now $f^{-1}(U_1)$ and $g^{-1}(U_2)$ are open.
 Let $V = f^{-1}(U_1) \cap g^{-1}(U_2)$ be a nbd of $x$.
 For any $y \in V$, $f(y) \neq g(y)$ otherwise
-$U_1 \cap U_2 \neq \emptyset$. Hence $x \in V \subseteq \\{ x \mid f(x) \neq g(x) \\}$
-is open. Hence $\\{ x \mid f(x) = g(x) \\}$ is closed.
+$U_1 \cap U_2 \neq \emptyset$. Hence $x \in V \subseteq \{ x \mid f(x) \neq g(x) \}$
+is open. Hence $\{ x \mid f(x) = g(x) \}$ is closed.
 \end{proof}
 
 % --- Page 11 ---
@@ -314,7 +311,7 @@ As $\sigma \in SL_n(\mathbb{C})$, and by subgroup tests, we can show $SL_n(\math
 
 \begin{remark}\label{rem:closed_subgroups}
 \[
-SL(n) = GL_n(\mathbb{CIR}) \cap SL_n(\mathbb{C}),
+SL(n) = GL_n(\mathbb{R}) \cap SL_n(\mathbb{C}),
 \]
 \[
 SU(n) = SL_n(\mathbb{C}) \cap U(n),
@@ -344,8 +341,6 @@ Now for $\sigma = (a_{ij}) \in U(n)$ if and only if
 \end{proof}
 
 % --- Page 14 ---
----
-
 \[
 \sum_{k=1}^n |a_{ki}|^2 = 1
 \]
@@ -356,7 +351,7 @@ Now in $(\mathbb{C}^{n^2}, \|\cdot\|_1)$, let $v = (v_k)_{k=1}^{n^2}$ where $|v_
 \|v\|_1 = \max_{1 \leq k \leq n^2} |v_k|.
 \]
 
-Observe $f: M_n(\mathbb{C}) \to \mathbb{C}^{n^2}$ as a homeomorphism. $f(U C_n)$ is closed and bounded, and compact. This implies $U C_n$ is compact.
+Observe $f: M_n(\mathbb{C}) \to \mathbb{C}^{n^2}$ as a homeomorphism. $f(U(n))$ is closed and bounded, and compact. This implies $U(n)$ is compact.
 
 \[
 \square
@@ -365,7 +360,5 @@ Observe $f: M_n(\mathbb{C}) \to \mathbb{C}^{n^2}$ as a homeomorphism. $f(U C_n)$
 \begin{remark}
 The choice of the norm does not matter as all norms in finite dimension vector space are equivalent (add the proof to that in the appendix).
 \end{remark}
-
----
 
 \end{document}
