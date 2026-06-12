@@ -27,7 +27,7 @@
 
 % --- Page 1 ---
 \begin{itemize}
-    \item \textbf{Modules} $(M, R, +)$
+    \item \textbf{Modules $(M, R, +)$}
     \begin{itemize}
         \item Verify the axioms
     \end{itemize}
@@ -49,35 +49,30 @@
 % --- Page 3 ---
 \begin{example}\label{ex:modules}
     \begin{enumerate}
-        \item Vector space $\mathbb{C}$ Ring over module is a field.
-
+        \item Vector space $\mathbb{C}$ (Ring over module is a field).
         \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
         \[
         f(x) \cdot v := f(T)(v).
         \]
         Note: $(V, T) \longmapsto F[x]$ module.
-
         For $\longmapsto$ we define $T(x) := x \cdot v$.
     \end{enumerate}
 \end{example}
 
 % --- Page 4 ---
 \begin{itemize}
-    \item \textbf{Vector subspaces}
+    \item \textbf{Submodules}
 
-    \item In $\mathbb{Z}$-modules say $M$
     \begin{definition}\label{def:submodule_z}
-        $N$ is a submodule iff $(N, +) \leq (CM, +)$.
+        In $\mathbb{Z}$-modules, say $M$, $N$ is a submodule if $(N, +) \leq (CM, +)$.
     \end{definition}
 
-    \item In $R$ is a $R$-module
-    \begin{definition}\label{def:submodule_ring}
-        $N$ is a submodule iff $N$ is an ideal.
+    \begin{definition}\label{def:submodule_r}
+        In $R$ is a $R$-module, $N$ is a submodule if $N$ is an ideal.
     \end{definition}
 
-    \item If $M$ is a $F[x]$-module $\cong (V, T)$
     \begin{definition}\label{def:submodule_fx}
-        $W$ is a submodule iff $T(CW) \subseteq W$, i.e. $W$ is invariant under $T$.
+        If $M$ is a $F[x]$-module $\cong (V, T)$, $W$ is a submodule if $T(CW) \subseteq W$, i.e., $W$ is invariant under $T$.
     \end{definition}
 \end{itemize}
 
@@ -90,9 +85,31 @@
 \hline
 \textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\ \hline
 $(V, \mathbb{F})$ & $\dim V < \infty$ & $\dim V = \{0, 1\}$ \\ \hline
-$G$ is abelian group treated like $\mathbb{Z}$-module & f.g. as group & cyclic as group \\ \hline
-$R$ comm ring and $M \triangleleft R$, $M$ is $R$-module & f.g. as an ideal & principal ideal \\ \hline
+$G$ is abelian group & f.g as & cyclic as \\
+treated like $\mathbb{Z}$-module & group & group \\ \hline
+$R$ comm ring and $M \triangleleft R$ & f.g as & principle \\
+$M$ is $R$-module & an ideal & ideal \\ \hline
 \end{tabular}
+
+\begin{definition}\label{def:finitely_generated_module}
+A module $M$ is \textit{finitely generated} if there exists a finite set of elements $\{m_1, m_2, \dots, m_n\}$ in $M$ such that every element of $M$ can be written as a linear combination of these elements.
+\end{definition}
+
+\begin{definition}\label{def:cyclic_module}
+A module $M$ is \textit{cyclic} if there exists an element $m \in M$ such that every element of $M$ can be written as a multiple of $m$.
+\end{definition}
+
+\begin{remark}\label{rem:vector_space}
+For a vector space $(V, \mathbb{F})$, being finitely generated means $\dim V < \infty$. A cyclic vector space has dimension either $0$ or $1$.
+\end{remark}
+
+\begin{remark}\label{rem:abelian_group}
+An abelian group $G$ treated as a $\mathbb{Z}$-module is finitely generated if it is finitely generated as a group. It is cyclic as a $\mathbb{Z}$-module if it is cyclic as a group.
+\end{remark}
+
+\begin{remark}\label{rem:ideal_module}
+For a commutative ring $R$ and an $R$-module $M$ that is an ideal of $R$, $M$ is finitely generated as an $R$-module if it is finitely generated as an ideal. A principal ideal is a cyclic $R$-module.
+\end{remark}
 
 % --- Page 6 ---
 \begin{itemize}
@@ -107,10 +124,16 @@ $R$ comm ring and $M \triangleleft R$, $M$ is $R$-module & f.g. as an ideal & pr
     \end{itemize}
 
     \begin{itemize}
-        \item For ring $R$, $\Theta: M \rightarrow N$ where $M = N = R$ and $\Theta(rs) = r\Theta(s)$ is \textbf{not} a ring homomorphism but is a module homomorphism.
+        \item For ring $R$, $\Theta: M \rightarrow N$ where $M = N = R$ and
+        \[
+        \Theta(rs) = r\Theta(s)
+        \]
+        is \textbf{not} a ring homomorphism but is a module homomorphism.
     \end{itemize}
 
-    \item Isomorphism theorems hold for modules.
+    \begin{itemize}
+        \item Isomorphism theorems hold for modules.
+    \end{itemize}
 \end{itemize}
 
 % --- Page 7 ---
