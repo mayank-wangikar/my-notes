@@ -51,52 +51,43 @@ Let $G$ be a topological group. Let $H$ be a subgroup of abstract group $G$.
 \begin{proof}
 (i) Observe $\overline{H} = \bigcap_{V \in \mathcal{V}} HV$ where $\mathcal{V}$ is collection of all nbds of $e$. As $H \subseteq \overline{H}$ hence $\overline{H} \neq \emptyset$.
 
-For $x, y \in \overline{H}$ we want to show $xy^{-1} \in \overline{H}$.
-
-We know $m \colon G \times G \to G$ is continuous, where $m(x,y) = xy^{-1}$.
-
-Observe $m^{-1}(\overline{H})$ is closed, and $H \times H \subseteq m^{-1}(\overline{H})$. Hence $\overline{H} \times \overline{H} = \overline{H \times H} \subseteq m^{-1}(\overline{H})$ and this implies $m(\overline{H} \times \overline{H}) \subseteq \overline{H}$.
+For $x, y \in \overline{H}$ we want to show $xy^{-1} \in \overline{H}$. We know $m: G \times G \to G$ is continuous, where $m(x,y) = xy^{-1}$. Observe $m^{-1}(\overline{H})$ is closed, and $H \times H \subseteq m^{-1}(\overline{H})$. Hence $\overline{H} \times \overline{H} = \overline{H \times H} \subseteq m^{-1}(\overline{H})$ and this implies $m(\overline{H} \times \overline{H}) \subseteq \overline{H}$.
 \end{proof}
 
 % --- Page 3 ---
 ---
 
-\begin{enumerate}
-    \item[(cii)] We construct a mapping
-    \[
-    n \colon G \times G \to G, \quad (x, y) \mapsto x y x^{-1}
-    \]
-    and observe that $n$ is a continuous map. This implies that $n^{-1}(\overline{H})$ is closed and, similar to (ci),
-    \[
-    H \times H \subseteq n^{-1}(\overline{H}).
-    \]
-    This implies $\overline{H} \times \overline{H} = \overline{H} \times \overline{H}$ is a subset of $n^{-1}(\overline{H})$. Hence,
-    \[
-    n(\overline{H} \times \overline{H}) \subseteq \overline{H}.
-    \]
-    \begin{proof}
-    $\square$
-    \end{proof}
+We construct a mapping
+\[
+n \colon G \times G \to G, \quad (x, y) \mapsto x y x^{-1}
+\]
+and observe that $n$ is a continuous map. This implies that $n^{-1}(\overline{H})$ is closed and similar to (Ci).
+\[
+H \times H \subseteq n^{-1}(\overline{H}) \implies \overline{H} \times \overline{H} = \overline{H \times H}
+\]
+is a subset of $n^{-1}(\overline{H})$. Hence
+\[
+n(\overline{H} \times \overline{H}) \subseteq \overline{H}.
+\]
 
-    \item[*]
-    \begin{definition}\label{def:left_cosets}
-        The set of all left cosets, denoted $G/H$.
-    \end{definition}
-    We have a natural map or projection
-    \[
-    \pi \colon G \to G/H, \quad x \mapsto xH.
-    \]
+\begin{definition}\label{def:left_cosets}
+* Set of all left cosets set $G/H$. We have a natural map or projection
+\[
+\pi \colon G \to G/H, \quad x \mapsto xH.
+\]
+\end{definition}
 
-    \begin{remark}\label{rem:topology_on_quotient}
-        If $G$ is a topological group, we will topologize $G/H$ assuming $H$ is closed. Construct
-        \[
-        \mathcal{T}_{G/H} = \{ O \subseteq G/H \mid \pi^{-1}(O) \in \mathcal{T}_G \},
-        \]
-        i.e., $O$ is open if and only if $\pi^{-1}(O)$ is open in $G$.
-    \end{remark}
-\end{enumerate}
+\begin{remark}\label{rem:topology_on_quotient}
+If $G$ is a topological group, we will topologize $G/H$ assuming $H$ is closed. Construct
+\[
+\mathcal{T}_{G/H} = \{ O \subseteq G/H \mid \pi^{-1}(O) \in \mathcal{T}_G \},
+\]
+i.e., $O$ is open if and only if $\pi^{-1}(O)$ is open in $G$.
+\end{remark}
 
 % --- Page 4 ---
+---
+
 which ensures $\pi$ is a continuous map, moreover a quotient map where $\pi$ is surjective by construction.
 
 \begin{lemma}\label{lem:quotient_space}
@@ -105,32 +96,38 @@ $G/H$ is a $T_1$-space, and $\pi$ is open.
 
 \begin{proof}
 Since $H$ is closed, then $\alpha H$ is closed by homeomorphism. Observe $G - \alpha H$ is open in $G$.
-Let $\tilde{\alpha} = \alpha H \in G/H$. Observe $\pi^{-1}(G/H - \tilde{\alpha}) = G - \alpha H$.
+Let $\tilde{\alpha} = \alpha H \in G/H$. Observe
+$\pi^{-1}(G/H - \tilde{\alpha}) = G - \alpha H$.
 Hence $\tilde{\alpha}$ is closed, $G/H$ is $T_1$.
 
 We want to show $\pi$ is an open map.
-Let $O$ be an open map in $G/H$ then $\pi(O)$ is open in $G/H$ iff $\pi^{-1}(\pi(O))$ is open in $G$.
-Now $OH = \pi^{-1}(\pi(O))$ and $OH = \bigcup Oh$. Hence $OH$ is open. So
+Let $O$ be an open map in $G/H$ then
+$\pi(O)$ is open in $G/H$ iff $\pi^{-1}(\pi(O))$ is open in $G$.
+Now $OH = \pi^{-1}(\pi(O))$ and
+$OH = \bigcup_{\alpha \in O} \alpha H$.
+Hence $OH$ is open.
 \end{proof}
 
 % --- Page 5 ---
-\[
-\pi^{-1}(\pi(O)) \text{ is open which implies } \pi(O) \text{ is open.}
-\]
+---
 
-\begin{lemma}\label{lem:quotient_t2}
+$\pi^{-1}(\pi(O))$ is open which implies $\pi(O)$ is open.
+
+\begin{lemma}\label{lem:G/H_T2}
 $G/H$ is a $T_2$ space.
 \end{lemma}
 
 \begin{proof}
-Consider $xH \neq yH$ in $G/H$. Now $x \in xH$ and $x \in G \setminus yH$ which is open as $H$ is closed and $yH$ is closed. Now, let $V$ be a neighborhood of $x$ such that $x \in V \subset G \setminus yH$.
-
-Observe that $Vx \cap yH = \emptyset$ implies $VxH \cap yH = \emptyset$ otherwise $vh_1 = gh_2$ and $vx = yh_2h_1^{-1}$ implying $Vx \cap yH \neq \emptyset$. Now, we can find a neighborhood $V_1$ of $x$ such that $V_1V_1 \subset V$. Therefore, $V_1^{-1}V_1xH \cap yH = \emptyset$ which implies $V_1xH \cap V_1yH = \emptyset$, which is $\pi(V_1x) \cap \pi(V_1y) = \emptyset$ and by the previous lemma $\pi(V_1x)$ and $\pi(V_1y)$ are open sets and $xH \in \pi(V_1x)$ and $yH \in \pi(V_1y)$. Hence
+Consider $xH \neq yH$ in $G/H$.
+Now $x \in xH$ and $x \notin G \setminus yH$ which is open as $H$ is closed and $yH$ is closed.
+Now, let $V$ be a neighborhood of $x$ such that $x \in V \subset G \setminus yH$.
+Observe $Vx \cap yH = \emptyset$ implies $VxH \cap yH = \emptyset$ otherwise $vh_1 = gh_2$ and $v = gh_2h_1^{-1}$ implying $Vx \cap yH \neq \emptyset$.
+Now, we can find a neighborhood $V_1$ of $V$ such that $V_1^{-1}V_1 \subset V$ therefore $V_1^{-1}V_1xH \cap yH = \emptyset$.
+This implies $V_1xH \cap V_1yH = \emptyset$, which is
+$\pi(V_1x) \cap \pi(V_1y) = \emptyset$ and by previous lemma $\pi(V_1x)$ and $\pi(V_1y)$ are open sets and $xH \in \pi(V_1x)$ and $yH \in \pi(V_1y)$.
 \end{proof}
 
 % --- Page 6 ---
-$G/H$ is $T_2$.
-
 \begin{remark}
 We call $G/H$ the quotient space where $H$ is a closed subgroup of $H$, has equipped with quotient topology.
 \end{remark}
@@ -140,15 +137,15 @@ If $G$ is a topological group, $H$ is normal subgroup, the quotient topology equ
 \end{lemma}
 
 \begin{proof}
-We want to show $\varphi_1: G/H \times G/H \to G/H$,
+We want to show $\varphi_1: G/H \times G/H \to G/H$ defined by
 \[
-(x_1, y_1) \mapsto x_1 y_1^{-1}
+\varphi_1(\alpha_1, y_1) \mapsto \alpha_1 y_1^{-1}
 \]
 is continuous.
 
-And $\varphi: G \times G \to G$,
+And $\varphi: G \times G \to G$ defined by
 \[
-(x, y) \mapsto xy^{-1}
+\varphi(\alpha, y) \mapsto \alpha y^{-1}
 \]
 is continuous.
 \end{proof}
@@ -162,9 +159,10 @@ G & \xrightarrow{\varphi} & G/H
 \end{array}
 \]
 
-Observe that $\psi_1 (\pi \times \pi) = \psi \pi$ and $\pi$, $\psi$ are continuous. Hence $\psi_1 (\pi \times \pi)$ are continuous.
+Observe that $\psi_1(\pi \times \pi) = \psi \pi$ and $\pi$, $\psi$ are continuous. Hence $\psi_1(\pi \times \pi)$ are continuous.
 
-Let $O_1$ be an open subset of $G/H$ then $\psi_1 (\pi \times \pi)^{-1}(O_1)$ is open. As $\pi \times \pi$ is an open map, observe that $(\pi \times \pi)^{-1} \psi_1^{-1}(O_1)$ is open. Hence $\psi_1^{-1}(O_1)$ is open.
+Let $O_1$ be an open subset of $G/H$ then
+$\psi_1(\pi \times \pi)^{-1}(O_1)$ is open. As $\pi \times \pi$ is an open map, observe that $\pi \times \pi (\pi \times \pi)^{-1} \psi_1^{-1}(O_1)$ is open. Hence $\psi_1^{-1}(O_1)$ is open.
 
 \begin{proof}
 $\square$
@@ -179,44 +177,36 @@ Let $G$ be a topological group, and $H$ be a subgroup.
 \end{lemma}
 
 % --- Page 8 ---
----
 \begin{proof}
-\begin{enumerate}[(a)]
-\item $H$ is a closed subset of a compact set and $G/H = \pi(G)$ where $G$ is compact and $\pi$ is a continuous mapping. Hence, a continuous map of a compact set is compact.
+\begin{enumerate}
+    \item[(a)] $H$ is a closed subset of a compact set and $G/H = \pi(G)$ where $G$ is compact and $\pi$ is a continuous mapping. Hence a continuous map of a compact set is compact.
+
+    \item[(b)] A closed subset of a locally compact set is locally compact.
+
+    Let $S$ be locally compact, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \cap S$, there exists a neighborhood of $p$ in $S$, $\overline{U_p}$ such that $\overline{U_p}$ is compact. Observe for $p \in T$, there exists an open set $T \cap U_p$ in $T$ such that $\overline{T \cap U_p} = \overline{T} \cap \overline{U_p}$ is compact as $\overline{T \cap U_p}$ is a closed subset of $\overline{U_p}$ which is compact. Hence $H$ is locally compact.
+
+    Goal: $G/H$ is locally compact.
 \end{enumerate}
-
-\begin{enumerate}[(b)]
-\item A closed subset of a locally compact set is locally compact.
-
-Let $S$ be locally compact, $T = \overline{S}$ and $T \subseteq S$. For $p \in T \subseteq S$, there exists a neighborhood of $p$ in $S$, $U_p$ such that $\overline{U_p}$ is compact. Observe for $p \in T$, there exists an open set $T \cap U_p$ in $T$ such that
-\[
-\overline{T \cap U_p} = \overline{T} \cap \overline{U_p}
-\]
-is compact as $\overline{T \cap U_p}$ is a closed subset of $\overline{U_p}$, which is compact. Hence $H$ is locally compact.
-
-\textbf{Goal:} $G/H$ is locally compact.
 \end{proof}
----
 
 % --- Page 9 ---
 Let $q_i \in G \setminus H$ and let $U_i$ be a neighborhood of $q_i$. Let
 \[ U = \pi^{-1}(U_i), \]
-and let $x \in G$ such that $\pi(x) = q_i$. As $G$ is locally compact we get a neighborhood $O$ of $x$ such that $\overline{O}$ is compact and $\overline{O} \subseteq U$ by the proposition given below. Then we have $\pi(\overline{O}) \subseteq \pi(U) = U_i$. If $O_i = \pi(O)$ is a neighborhood of $q_i$. And $\pi(\overline{O})$ is a continuous image of compact set hence we get $\pi(\overline{O})$ is compact. Since $G/H$ is $T_2$-space $\pi(\overline{O})$ is closed which implies
-\[ O \subseteq \overline{O} \Rightarrow O_i \subseteq \pi(\overline{O}) \text{ and } \]
-\[ \overline{O_i} \subseteq \pi(\overline{O}) = \pi(\overline{O}) \text{ which is compact, so is } \overline{O_i}. \]
+and let $x \in G$ such that $\pi(x) = q_i$. As $G$ is locally compact, we get a neighborhood $O$ of $x$ such that $\overline{O}$ is compact and $\overline{O} \subseteq U$ by the proposition given below. Then we have $\pi(\overline{O}) \subseteq \pi(U) = U_i$. If $O_i = \pi(O)$ is a neighborhood of $q_i$. And $\pi(\overline{O})$ is a continuous image of a compact set, hence we get $\pi(\overline{O})$ is compact. Since $G/H$ is $T_2$-space $\pi(\overline{O})$ is closed which implies
+\[ O \subseteq \overline{O} \Rightarrow O_i \subseteq \pi(\overline{O}) \quad \text{and} \quad \overline{O_i} \subseteq \pi(\overline{O}) = \pi(\overline{O}) \quad \text{which is compact, so is} \quad \overline{O_i}. \]
 Thus $O_i$ is a neighborhood of $q_i$ such that $\overline{O_i}$ is compact. It follows $G/H$ is locally compact.
 
-\begin{corollary}\label{cor:quotient_normal}
-If $G$ is locally compact then $G/H$ is normal or $T_4$.
+\begin{corollary}\label{cor:quotient_locally_compact}
+If $G$ is locally compact, then $G/H$ is normal or $T_4$.
 \end{corollary}
 
 % --- Page 10 ---
-\begin{proposition}
-For any topological group \( G \), let \( U \) be a neighborhood of \( e \), there exists a neighborhood of \( e \) \( V \) such that \( V \subseteq U \).
+\begin{proposition}\label{prop:nbd_subgroup}
+For any topological group $G$, let $U$ be a neighborhood of $e$, there exists a neighborhood of $e$ $V$ such that $V \subseteq U$.
+\end{proposition}
 
 \begin{proof}
-By properties (5) and (6) we know that for every neighborhood of \( e \) \( U \) we have a symmetric neighborhood of \( e \) \( V \) such that \( V^2 \subseteq U \). Now \( x \in \overline{V} = \bigcap_{w \in \mathcal{V}} wV \) where \( \mathcal{V} \) is the set of all neighborhoods of \( e \), this implies \( x \in \overline{V} \subseteq V^2 \subseteq U \).
+By properties (5) and (6) we know that for every neighborhood of $e$, $U$, we have a symmetric neighborhood of $e$ $V$ such that $V^2 \subseteq U$. Now $x \in \overline{V} = \bigcap_{w \in V} wV$ where $V^2$ is the set of all neighborhoods of $e$, this implies $x \in \overline{V} \subseteq V^2 \subseteq U$.
 \end{proof}
-\end{proposition}
 
 \end{document}
