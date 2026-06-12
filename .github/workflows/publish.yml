@@ -20,7 +20,7 @@ jobs:
             texlive-latex-base \
             texlive-latex-extra \
             texlive-fonts-recommended \
-            texlive-science
+            texlive-science \
             texlive-pictures
 
       - name: Compile all .tex files to PDF
