@@ -12,10 +12,22 @@ jobs:
       - name: Checkout notes repo
         uses: actions/checkout@v4
 
+      - name: Cache LaTeX install
+        id: latex-cache
+        uses: actions/cache@v4
+        with:
+          path: /usr/share/texlive
+          key: texlive-base-extra-fonts-v1
+
       - name: Install dependencies
+        if: steps.latex-cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
-          sudo apt-get install -y --fix-missing texlive-full
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-science
 
       - name: Compile all .tex files to PDF
         run: |
@@ -38,31 +50,12 @@ jobs:
           mkdir -p website/pdfs
           cp compiled_pdfs/*.pdf website/pdfs/ 2>/dev/null || true
 
-      - name: Update notes.html
-        run: |
-          python3 - <<'EOF'
-          import pathlib
-
-          pdfs = sorted(pathlib.Path("website/pdfs").glob("*.pdf"))
-          links = ""
-          for pdf in pdfs:
-              name = pdf.stem.replace(" - ltx", "").replace(" - LTX", "")
-              links += f'<li><a href="pdfs/{pdf.name}">{name}</a></li>\n'
-
-          notes_path = pathlib.Path("website/notes.html")
-          content = notes_path.read_text()
-          start = content.index("<!-- NOTES_LIST_START -->") + len("<!-- NOTES_LIST_START -->")
-          end = content.index("<!-- NOTES_LIST_END -->")
-          new_content = content[:start] + f"\n<ul>\n{links}</ul>\n" + content[end:]
-          notes_path.write_text(new_content)
-          print(f"Updated notes.html with {len(pdfs)} PDFs.")
-          EOF
-
       - name: Push to website
         run: |
           cd website
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add .
-          git diff --staged --quiet || git commit -m "Update notes"
+          git add pdfs/
+          git diff --staged --quiet || git commit -m "Update compiled PDFs"
+          git pull --rebase
           git push
