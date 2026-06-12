@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm, enumerate}
+\usepackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
+\usepackage{parskip}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+
+\begin{center}
+{\Large\textbf{Random Matrices}}\\
+\vspace{0.3cm}
+{\normalsize\today}
+\end{center}
+\vspace{0.5cm}
+
+
+% --- Page 1 ---
+---
+
+\begin{definition}\label{def:random_matrix}
+Consider a matrix of random entries:
+\[
+\begin{pmatrix}
+* & \cdots & * \\
+\vdots & \ddots & \vdots \\
+* & \cdots & *
+\end{pmatrix}
+\]
+These entries are random variables. Let \(X_1, \ldots, X_n\) be vectors in \(\mathbb{R}^d\), where each \(X_i = (X_{i1}, \ldots, X_{id})\) consists of random variables.
+\end{definition}
+
+\begin{definition}\label{def:variance_covariance}
+For a matrix \(X\) with entries \(X_{ij}\):
+\begin{enumerate}
+    \item The \textbf{variance} of the \(i\)-th component is given by:
+    \[
+    \frac{1}{n} \sum_{i=1}^n X_{i,i}^2
+    \]
+    \item The \textbf{covariance} between components \(i_1\) and \(i_2\) is given by:
+    \[
+    \frac{1}{n} \sum_{i=1}^n X_{i,i_1} X_{i,i_2}
+    \]
+\end{enumerate}
+\end{definition}
+
+Let \(X\) be the data matrix:
+\[
+X = \begin{pmatrix}
+X_{11} & \cdots & X_{1d} \\
+\vdots & \ddots & \vdots \\
+X_{n1} & \cdots & X_{nd}
+\end{pmatrix}
+\]
+The sample covariance matrix is defined as:
+\[
+\frac{XX^\top}{n}
+\]
+
+\begin{definition}\label{def:eigenvalues}
+The \textbf{eigenvalues} of a matrix \(A\) are defined by the equation:
+\[
+Av = \lambda v \quad \text{for} \quad v \neq 0.
+\]
+The trace of \(A\) is given by:
+\[
+\text{tr}(A) = \sum_i A_{ii} = \sum_i \lambda_i,
+\]
+where \(\lambda_i\) are the eigenvalues of \(A\).
+\end{definition}
+
+\begin{remark}\label{rem:spectral_distribution}
+The set of eigenvalues of a random matrix is called the \textbf{empirical spectral distribution}. This is given by:
+\[
+\frac{1}{n} \sum_{i=1}^n \delta_{\lambda_i},
+\]
+where \(\delta_{\lambda_i}\) is the Dirac delta function centered at \(\lambda_i\).
+\end{remark}
+
+---
+
+% --- Page 2 ---
+The handwritten content in the image does not explicitly contain definitions, theorems, proofs, or other structured mathematical statements. Instead, it appears to be a set of notes on properties of a matrix \( A \) with entries that are probabilistic and symmetric.
+
+
+\[
+\begin{pmatrix}
+A_{11} & A_{1j} & \cdots \\
+A_{j1} & A_{jj} & \cdots \\
+\vdots & \vdots & \ddots \\
+A_{m1} & A_{mj} & \cdots & A_{mn}
+\end{pmatrix}
+\]
+
+where the entries \( A_{ij} \) are probabilistic with \( \mathbb{P}(A_{ij} = 1) = \mathbb{P}(A_{ij} = -1) = \frac{1}{2} \) and \( A_{ji} = A_{ij} \).
+
+\[
+\text{tr}(A) = \sum_i A_{ii} = \sum_i \lambda_i
+\]
+
+\[
+\text{tr}(A^2) = \sum_i A_{ii}^2 = \sum_i \lambda_i^2
+\]
+
+\[
+\text{tr}(A^k) = \sum_i A_{ii}^k = \sum_i \lambda_i^k
+\]
+
+\end{document}
