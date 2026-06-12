@@ -12,15 +12,7 @@ jobs:
       - name: Checkout notes repo
         uses: actions/checkout@v4
 
-      - name: Cache LaTeX install
-        id: latex-cache
-        uses: actions/cache@v4
-        with:
-          path: /usr/share/texlive
-          key: texlive-full-v2
-
-      - name: Install dependencies
-        if: steps.latex-cache.outputs.cache-hit != 'true'
+      - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
@@ -28,14 +20,6 @@ jobs:
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-science
-
-      - name: Add LaTeX to PATH
-        run: echo "/usr/share/texlive/bin/x86_64-linux" >> $GITHUB_PATH
-
-      - name: Debug - find pdflatex
-        run: |
-          which pdflatex || echo "not in PATH"
-          find /usr -iname "pdflatex*" 2>/dev/null
 
       - name: Compile all .tex files to PDF
         run: |
