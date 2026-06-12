@@ -56,7 +56,7 @@ jobs:
       - name: Update manifest
         run: |
           python3 - <<'EOF'
-          import json, pathlib
+          import json, pathlib, re
 
           manifest_path = pathlib.Path("website/notes-manifest.json")
           
@@ -68,27 +68,41 @@ jobs:
           state.setdefault("folders", [])
           state.setdefault("uncategorized", [])
 
-          def collect_names(folders):
-              names = set()
+          def clean_title(stem):
+              stem = re.sub(r'\s*-\s*ltx$', '', stem, flags=re.IGNORECASE)
+              stem = re.sub(r'\s*-\s*LTX$', '', stem)
+              return stem.strip()
+
+          def collect_all(folders):
+              entries = {}
               for f in folders:
                   for file in f.get("files", []):
-                      names.add(file["name"])
-                  names |= collect_names(f.get("subfolders", []))
-              return names
+                      # index by both raw name and cleaned title
+                      entries[file["name"].lower()] = True
+                      entries[clean_title(pathlib.Path(file["name"]).stem).lower()] = True
+                  entries.update(collect_all(f.get("subfolders", [])))
+              return entries
 
-          known = collect_names(state["folders"])
-          known |= {f["name"] for f in state["uncategorized"]}
+          known = collect_all(state["folders"])
+          for f in state["uncategorized"]:
+              known[f["name"].lower()] = True
+              known[clean_title(pathlib.Path(f["name"]).stem).lower()] = True
 
           for pdf in sorted(pathlib.Path("website/pdfs").glob("*.pdf")):
-              if pdf.name not in known:
-                  state["uncategorized"].append({
+              title = clean_title(pdf.stem)
+              if pdf.name.lower() not in known and title.lower() not in known:
+                  entry = {
                       "name": pdf.name,
-                      "title": pdf.stem.replace(" - ltx", "").replace(" - LTX", ""),
+                      "title": title,
                       "path": f"pdfs/{pdf.name}"
-                  })
-                  print(f"Added: {pdf.name}")
+                  }
+                  state["uncategorized"].append(entry)
+                  known[pdf.name.lower()] = True
+                  known[title.lower()] = True
+                  print(f"Added: {title}")
 
           manifest_path.write_text(json.dumps(state, indent=2))
+          print("Manifest updated.")
           EOF
 
       - name: Push to website
