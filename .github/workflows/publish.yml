@@ -59,12 +59,12 @@ jobs:
           import json, pathlib, re
 
           manifest_path = pathlib.Path("website/notes-manifest.json")
-          
+
           if manifest_path.exists():
               state = json.loads(manifest_path.read_text())
           else:
               state = {"folders": [], "uncategorized": []}
-          
+
           state.setdefault("folders", [])
           state.setdefault("uncategorized", [])
 
@@ -77,7 +77,6 @@ jobs:
               entries = {}
               for f in folders:
                   for file in f.get("files", []):
-                      # index by both raw name and cleaned title
                       entries[file["name"].lower()] = True
                       entries[clean_title(pathlib.Path(file["name"]).stem).lower()] = True
                   entries.update(collect_all(f.get("subfolders", [])))
@@ -88,7 +87,9 @@ jobs:
               known[f["name"].lower()] = True
               known[clean_title(pathlib.Path(f["name"]).stem).lower()] = True
 
-          if pdf.name.lower() not in known and title.lower() not in known:
+          for pdf in sorted(pathlib.Path("website/pdfs").glob("*.pdf")):
+              title = clean_title(pdf.stem)
+              if pdf.name.lower() not in known and title.lower() not in known:
                   entry = {
                       "name": title,
                       "pdf": f"pdfs/{pdf.name}"
