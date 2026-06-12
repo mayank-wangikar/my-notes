@@ -27,20 +27,23 @@
 
 % --- Page 1 ---
 \begin{itemize}
-    \item \textbf{Modules $(M, R, +)$}
-    \begin{itemize}
-        \item Verify the axioms
-    \end{itemize}
+    \item \textbf{Modules} $(M, R, +)$
+
+    \begin{proof}
+        Verify the axioms.
+    \end{proof}
 
     \item \textbf{Submodules}
-    \begin{itemize}
-        \item Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$.)
-    \end{itemize}
+
+    \begin{proof}
+        Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$).
+    \end{proof}
 
     \item \textbf{Homomorphism}
-    \begin{itemize}
-        \item Verify the axioms
-    \end{itemize}
+
+    \begin{proof}
+        Verify the axioms.
+    \end{proof}
 \end{itemize}
 
 % --- Page 2 ---
@@ -50,17 +53,17 @@
 \begin{example}\label{ex:modules}
 \textbf{Modules}
 
-\begin{itemize}
-    \item Vector space (a ring over module is a field).
-
+\begin{enumerate}
+    \item Vector space $V$ (Ring over module is a field).
     \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
     \[
     f(x) \cdot v := f(T)(v).
     \]
+    \begin{remark}\label{rem:module_map}
     Note: $(V, T) \mapsto F[x]$ module.
-
+    \end{remark}
     For $\mapsto$ we define $T(x) := x \cdot v$.
-\end{itemize}
+\end{enumerate}
 \end{example}
 
 % --- Page 4 ---
@@ -79,25 +82,51 @@
 
     \item If $M$ is a $F[x]$-module $\cong (V, T)$
     \begin{definition}\label{def:submodule_fx}
-        $W$ is a submodule iff $T(CW) \subseteq W$, i.e. $W$ is invariant under $T$.
+        $W$ is a submodule iff $T(CW) \subseteq W$, i.e., $W$ is invariant under $T$.
     \end{definition}
 \end{itemize}
 
 % --- Page 5 ---
-\begin{center}
-\textbf{Finitely generated and cyclic modules}
-\end{center}
-
+\begin{table}[h]
+\centering
 \begin{tabular}{|l|l|l|}
 \hline
-\textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\ \hline
-$(V, \mathcal{F})$ & $\dim V < +\infty$ & $\dim V = \{0, 1\}$ \\ \hline
-$G$ is abelian group & f.g as & cyclic as \\
-treated like $\mathbb{Z}$-module & group & group \\ \hline
-$R$ comm ring and & f.g as & principle \\
-$M \triangleleft R$ & an ideal & ideal \\
-$M$ is $R$-module & & \\ \hline
+\multicolumn{3}{|c|}{\textbf{Finitely generated and Cyclic modules}} \\
+\hline
+\textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\
+\hline
+$(V, \mathbb{F})$ & $\dim V < +\infty$ & $\dim V = \{0, 1\}$ \\
+\hline
+$G$ is abelian group treated like $\mathbb{Z}$-module & f.g as group & cyclic as group \\
+\hline
+$R$ comm ring and $M \triangleleft R$ $M$ is $R$-module & f.g as an ideal & principle ideal \\
+\hline
 \end{tabular}
+\end{table}
+
+\begin{definition}\label{def:finitely_generated_module}
+A module $(V, \mathbb{F})$ is said to be finitely generated if its dimension $\dim V$ is finite, i.e., $\dim V < +\infty$.
+\end{definition}
+
+\begin{definition}\label{def:cyclic_module}
+A module $(V, \mathbb{F})$ is said to be cyclic if its dimension $\dim V$ is either $0$ or $1$, i.e., $\dim V = \{0, 1\}$.
+\end{definition}
+
+\begin{definition}\label{def:finitely_generated_group}
+An abelian group $G$, treated as a $\mathbb{Z}$-module, is finitely generated as a group if it is finitely generated as a $\mathbb{Z}$-module.
+\end{definition}
+
+\begin{definition}\label{def:cyclic_group}
+An abelian group $G$, treated as a $\mathbb{Z}$-module, is cyclic as a group if it is cyclic as a $\mathbb{Z}$-module.
+\end{definition}
+
+\begin{definition}\label{def:finitely_generated_ideal}
+Let $R$ be a commutative ring and $M$ an $R$-module such that $M \triangleleft R$. The module $M$ is finitely generated as an ideal if it is finitely generated as an $R$-module.
+\end{definition}
+
+\begin{definition}\label{def:principal_ideal}
+Let $R$ be a commutative ring and $M$ an $R$-module such that $M \triangleleft R$. The module $M$ is a principal ideal if it is cyclic as an $R$-module.
+\end{definition}
 
 % --- Page 6 ---
 \begin{itemize}
@@ -105,10 +134,14 @@ $M$ is $R$-module & & \\ \hline
 
     \begin{itemize}
         \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphisms $\leftrightarrow$ module homomorphisms.
+    \end{itemize}
 
+    \begin{itemize}
         \item For vector fields, linear transformations $\leftrightarrow$ module homomorphisms.
+    \end{itemize}
 
-        \item For ring $R$, $\Theta: M \rightarrow N$ where $M = N = R$ and
+    \begin{itemize}
+        \item For a ring $R$, $\Theta: M \to N$ where $M = N = R$ and
         \[
         \Theta(rs) = r\Theta(s)
         \]
