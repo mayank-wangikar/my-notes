@@ -21,7 +21,8 @@ jobs:
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-science \
-            texlive-pictures
+            texlive-pictures \
+            texlive-plain-generic
 
       - name: Compile all .tex files to PDF
         run: |
