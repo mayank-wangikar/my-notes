@@ -88,13 +88,10 @@ jobs:
               known[f["name"].lower()] = True
               known[clean_title(pathlib.Path(f["name"]).stem).lower()] = True
 
-          for pdf in sorted(pathlib.Path("website/pdfs").glob("*.pdf")):
-              title = clean_title(pdf.stem)
-              if pdf.name.lower() not in known and title.lower() not in known:
+          fif pdf.name.lower() not in known and title.lower() not in known:
                   entry = {
-                      "name": pdf.name,
-                      "title": title,
-                      "path": f"pdfs/{pdf.name}"
+                      "name": title,
+                      "pdf": f"pdfs/{pdf.name}"
                   }
                   state["uncategorized"].append(entry)
                   known[pdf.name.lower()] = True
