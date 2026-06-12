@@ -26,10 +26,8 @@
 
 
 % --- Page 1 ---
----
-
 \begin{definition}\label{def:random_matrix}
-Consider a matrix of random entries:
+Consider a random matrix with entries
 \[
 \begin{pmatrix}
 * & \cdots & * \\
@@ -37,64 +35,59 @@ Consider a matrix of random entries:
 * & \cdots & *
 \end{pmatrix}
 \]
-These entries are random variables. Let \(X_1, \ldots, X_n\) be vectors in \(\mathbb{R}^d\), where each \(X_i = (X_{i1}, \ldots, X_{id})\) consists of random variables.
+where these entries are random. Let $X_1, \ldots, X_n$ be vectors in $\mathbb{R}^d$, where each $X_i = (X_{i1}, \ldots, X_{id})$ consists of random variables.
 \end{definition}
 
-\begin{definition}\label{def:variance_covariance}
-For a matrix \(X\) with entries \(X_{ij}\):
-\begin{enumerate}
-    \item The \textbf{variance} of the \(i\)-th component is given by:
-    \[
-    \frac{1}{n} \sum_{i=1}^n X_{i,i}^2
-    \]
-    \item The \textbf{covariance} between components \(i_1\) and \(i_2\) is given by:
-    \[
-    \frac{1}{n} \sum_{i=1}^n X_{i,i_1} X_{i,i_2}
-    \]
-\end{enumerate}
-\end{definition}
+The variance of the $i$-th component is given by
+\[
+\frac{1}{n} \sum_{i=1}^n X_{ii}^2 \quad \longrightarrow \quad \text{Variance}.
+\]
 
-Let \(X\) be the data matrix:
+The covariance between two components is given by
+\[
+\frac{1}{n} \sum_{i=1}^n X_{i1} X_{i2} \quad \longrightarrow \quad \text{Covariance}.
+\]
+
+Let $X$ be the data matrix
 \[
 X = \begin{pmatrix}
 X_{11} & \cdots & X_{1d} \\
 \vdots & \ddots & \vdots \\
 X_{n1} & \cdots & X_{nd}
-\end{pmatrix}
+\end{pmatrix}.
 \]
-The sample covariance matrix is defined as:
+The sample covariance matrix is defined as
 \[
-\frac{XX^\top}{n}
+\frac{XX^\top}{n}.
 \]
 
 \begin{definition}\label{def:eigenvalues}
-The \textbf{eigenvalues} of a matrix \(A\) are defined by the equation:
+The eigenvalues $\lambda$ of a matrix $A$ are defined by the equation
 \[
 Av = \lambda v \quad \text{for} \quad v \neq 0.
 \]
-The trace of \(A\) is given by:
+The trace of a matrix $A$ is given by
 \[
-\text{tr}(A) = \sum_i A_{ii} = \sum_i \lambda_i,
+\text{tr}(A) = \sum_{i} A_{ii} = \sum_{i} \lambda_i,
 \]
-where \(\lambda_i\) are the eigenvalues of \(A\).
+where $\lambda_i$ are the eigenvalues of $A$.
 \end{definition}
 
 \begin{remark}\label{rem:spectral_distribution}
-The set of eigenvalues of a random matrix is called the \textbf{empirical spectral distribution}. This is given by:
+The set of eigenvalues of a random matrix is referred to as the empirical spectral distribution, denoted by
 \[
-\frac{1}{n} \sum_{i=1}^n \delta_{\lambda_i},
+\frac{1}{n} \sum_{i=1}^n \delta_{\lambda_i}.
 \]
-where \(\delta_{\lambda_i}\) is the Dirac delta function centered at \(\lambda_i\).
 \end{remark}
 
----
-
 % --- Page 2 ---
-The handwritten content in the image does not explicitly contain definitions, theorems, proofs, or other structured mathematical statements. Instead, it appears to be a set of notes on properties of a matrix \( A \) with entries that are probabilistic and symmetric.
+The image contains notes about a random matrix with entries that are probabilistic and symmetric properties of its trace.
 
+
+Consider a matrix \( A \) with entries \( A_{ij} \) such that:
 
 \[
-\begin{pmatrix}
+A = \begin{pmatrix}
 A_{11} & A_{1j} & \cdots \\
 A_{j1} & A_{jj} & \cdots \\
 \vdots & \vdots & \ddots \\
@@ -102,18 +95,20 @@ A_{m1} & A_{mj} & \cdots & A_{mn}
 \end{pmatrix}
 \]
 
-where the entries \( A_{ij} \) are probabilistic with \( \mathbb{P}(A_{ij} = 1) = \mathbb{P}(A_{ij} = -1) = \frac{1}{2} \) and \( A_{ji} = A_{ij} \).
+where the entries \( A_{ij} \) are independent random variables with probability \( \frac{1}{2} \) for \( 1 \) or \( -1 \), and \( A_{ji} = A_{ij} \).
 
 \[
-\text{tr}(A) = \sum_i A_{ii} = \sum_i \lambda_i
-\]
-
-\[
-\text{tr}(A^2) = \sum_i A_{ii}^2 = \sum_i \lambda_i^2
-\]
-
-\[
-\text{tr}(A^k) = \sum_i A_{ii}^k = \sum_i \lambda_i^k
-\]
+\begin{definition}\label{def:trace_properties}
+    For such a matrix \( A \), the following properties hold for its trace and powers:
+    \[
+    \tr(A) = \sum_i A_{ii} = \sum_i \lambda_i
+    \]
+    \[
+    \tr(A^2) = \sum_i A_{ii}^2 = \sum_i \lambda_i^2
+    \]
+    \[
+    \tr(A^k) = \sum_i A_{ii}^k = \sum_i \lambda_i^k
+    \]
+\end{definition}
 
 \end{document}
