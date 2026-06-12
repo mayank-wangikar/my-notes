@@ -33,9 +33,14 @@
     \end{proof}
 
     \item \textbf{Submodules}
-    \begin{proof}
-        Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$).
-    \end{proof}
+    \begin{definition}\label{def:submodule}
+        A subset $N$ of a module $(M, R, +)$ is called a submodule if
+        \begin{enumerate}
+            \item $N$ is a subgroup of $(M, +)$,
+            \item For any $r \in R$ and $m \in M$, $r m \in N$.
+        \end{enumerate}
+        Verify the axioms.
+    \end{definition}
 
     \item \textbf{Homomorphism}
     \begin{proof}
@@ -47,35 +52,37 @@
 % blank page
 
 % --- Page 3 ---
-\begin{example}\label{ex:vector-space-module}
+\begin{example}\label{ex:modules}
     \begin{enumerate}
-        \item A vector space $V$ over a field is a module (over its ring of scalars).
-        \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. The ring is constructed to be $F[x]$ where
-              \[
-              f(x) \cdot v := f(T)(v).
-              \]
-              Note: $(V, T) \mapsto F[x]$ module.
-              For $\mapsto$ we define $T(x) := x \cdot v$.
+        \item Vector space $V$ (Ring over module is a field).
+        \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
+        \[
+        f(x) \cdot v := f(T)(v).
+        \]
+        Note: $(V, T) \longmapsto F[x]$ module.
+        For $\longmapsto$ we define $T(x) := x \cdot v$.
     \end{enumerate}
 \end{example}
 
 % --- Page 4 ---
+\subsection*{Submodules}
+
 \begin{itemize}
     \item \textbf{Vector subspaces}
 
-    \item In $\mathbb{Z}$-modules say $M$
+    \item In $\mathbb{Z}$-modules, say $M$,
     \begin{definition}\label{def:submodule_z}
-        $N$ is a submodule iff $(N,+)\leq (CM,\tau)$.
+        $N$ is a submodule iff $(N, +) \leq (CM, +)$.
     \end{definition}
 
-    \item In $R$ is a $R$-module
+    \item In $R$ is a $R$-module,
     \begin{definition}\label{def:submodule_ring}
         $N$ is a submodule iff $N$ is an ideal.
     \end{definition}
 
-    \item If $M$ is a $F[x]$-module $\equiv (V,T)$
+    \item If $M$ is a $F[x]$-module $\cong (V, T)$,
     \begin{definition}\label{def:submodule_fx}
-        $W$ is a submodule iff $T(CW) \subseteq W$, i.e. $W$ is invariant under $T$.
+        $W$ is a submodule iff $T(CW) \subseteq W$, i.e., $W$ is invariant under $T$.
     \end{definition}
 \end{itemize}
 
@@ -84,44 +91,54 @@
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-\textbf{Finitely generated and Cyclic modules} & & \\
-\hline
-\textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\
-\hline
-$(V, \mathbb{F})$ & $\dim V < +\infty$ & $\dim V = \{0, 1\}$ \\
-\hline
-$G$ is abelian group treated like $\mathbb{Z}$-module & f.g. as group & cyclic as group \\
-\hline
-$R$ comm ring and $M \trianglelefteq R$, $M$ is $R$-module & f.g. as an ideal & principal ideal \\
-\hline
+\textbf{Finitely generated and cyclic modules} & & \\ \hline
+\textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\ \hline
+$(V, \mathbb{F})$ & $\dim V < \infty$ & $\dim V = \{0, 1\}$ \\ \hline
+$G$ is abelian group treated like $\mathbb{Z}$-module & f.g. as group & cyclic as group \\ \hline
+$R$ comm ring and $M \triangleleft R$, $M$ is $R$-module & f.g. as an ideal & principal ideal \\ \hline
 \end{tabular}
 \end{table}
 
-% illegible for any further structured content beyond the table.
+\begin{definition}\label{def:finitely_generated_module}
+A module $(V, \mathbb{F})$ is \textit{finitely generated} if $\dim V < \infty$.
+\end{definition}
+
+\begin{definition}\label{def:cyclic_module}
+A module $(V, \mathbb{F})$ is \textit{cyclic} if $\dim V = \{0, 1\}$.
+\end{definition}
+
+\begin{definition}\label{def:finitely_generated_group}
+An abelian group $G$ treated as a $\mathbb{Z}$-module is \textit{finitely generated} as a group.
+\end{definition}
+
+\begin{definition}\label{def:cyclic_group}
+An abelian group $G$ treated as a $\mathbb{Z}$-module is \textit{cyclic} as a group.
+\end{definition}
+
+\begin{definition}\label{def:finitely_generated_ideal}
+Let $R$ be a commutative ring and $M$ an ideal of $R$ such that $M$ is an $R$-module. $M$ is \textit{finitely generated} as an ideal.
+\end{definition}
+
+\begin{definition}\label{def:principal_ideal}
+Let $R$ be a commutative ring and $M$ an ideal of $R$ such that $M$ is an $R$-module. $M$ is a \textit{principal ideal}.
+\end{definition}
 
 % --- Page 6 ---
 \begin{itemize}
     \item \textbf{Module homomorphisms}
 
     \begin{itemize}
-        \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphisms $\leftrightarrow$ module homomorphisms.
+        \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphism $\leftrightarrow$ module homomorphism.
+        \item For vector fields, linear transformation $\leftrightarrow$ module homomorphism.
     \end{itemize}
 
-    \begin{itemize}
-        \item For vector fields, linear transformations $\leftrightarrow$ module homomorphisms.
-    \end{itemize}
+    \begin{definition}\label{def:ring_module_hom}
+        For a ring $R$, a map $\Theta: M \to N$ where $M = N = R$ and $\Theta(rs) = r\Theta(s)$ is \textbf{not} a ring homomorphism but is a module homomorphism.
+    \end{definition}
 
-    \begin{itemize}
-        \item For a ring $R$, $\Theta: M \to N$ where $M = N = R$ and
-        \[
-        \Theta(rs) = r\Theta(s)
-        \]
-        is \textbf{not} a ring homomorphism but is a module homomorphism.
-    \end{itemize}
-
-    \begin{itemize}
-        \item Isomorphism theorems hold for modules.
-    \end{itemize}
+    \begin{remark}\label{rem:isomorphism_theorems}
+        Isomorphism theorems hold for modules.
+    \end{remark}
 \end{itemize}
 
 % --- Page 7 ---
