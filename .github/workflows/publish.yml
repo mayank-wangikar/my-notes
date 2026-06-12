@@ -32,6 +32,11 @@ jobs:
       - name: Add LaTeX to PATH
         run: echo "/usr/share/texlive/bin/x86_64-linux" >> $GITHUB_PATH
 
+      - name: Debug - find pdflatex
+        run: |
+          which pdflatex || echo "not in PATH"
+          find /usr -iname "pdflatex*" 2>/dev/null
+
       - name: Compile all .tex files to PDF
         run: |
           mkdir -p compiled_pdfs
@@ -57,22 +62,17 @@ jobs:
         run: |
           python3 - <<'EOF'
           import json, pathlib, re
-
           manifest_path = pathlib.Path("website/notes-manifest.json")
-
           if manifest_path.exists():
               state = json.loads(manifest_path.read_text())
           else:
               state = {"folders": [], "uncategorized": []}
-
           state.setdefault("folders", [])
           state.setdefault("uncategorized", [])
-
           def clean_title(stem):
               stem = re.sub(r'\s*-\s*ltx$', '', stem, flags=re.IGNORECASE)
               stem = re.sub(r'\s*-\s*LTX$', '', stem)
               return stem.strip()
-
           def collect_all(folders):
               entries = {}
               for f in folders:
@@ -81,12 +81,10 @@ jobs:
                       entries[clean_title(pathlib.Path(file["name"]).stem).lower()] = True
                   entries.update(collect_all(f.get("subfolders", [])))
               return entries
-
           known = collect_all(state["folders"])
           for f in state["uncategorized"]:
               known[f["name"].lower()] = True
               known[clean_title(pathlib.Path(f["name"]).stem).lower()] = True
-
           for pdf in sorted(pathlib.Path("website/pdfs").glob("*.pdf")):
               title = clean_title(pdf.stem)
               if pdf.name.lower() not in known and title.lower() not in known:
@@ -98,7 +96,6 @@ jobs:
                   known[pdf.name.lower()] = True
                   known[title.lower()] = True
                   print(f"Added: {title}")
-
           manifest_path.write_text(json.dumps(state, indent=2))
           print("Manifest updated.")
           EOF
