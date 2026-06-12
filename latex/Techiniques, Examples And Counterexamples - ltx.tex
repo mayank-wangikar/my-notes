@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm, enumerate}
+\usepackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
+\usepackage{parskip}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+
+\begin{center}
+{\Large\textbf{Techiniques, Examples And Counterexamples}}\\
+\vspace{0.3cm}
+{\normalsize\today}
+\end{center}
+\vspace{0.5cm}
+
+
+% --- Page 1 ---
+\begin{itemize}
+    \item \textbf{Modules} $(M, R, +)$
+    \begin{itemize}
+        \item Verify the axioms
+    \end{itemize}
+
+    \item \textbf{Submodules}
+    \begin{itemize}
+        \item Verify the axioms (Check subgroup and for any $r \in R$, $m \in M$, $rm \in M$.)
+    \end{itemize}
+
+    \item \textbf{Homomorphism}
+    \begin{itemize}
+        \item Verify the axioms
+    \end{itemize}
+\end{itemize}
+
+% --- Page 2 ---
+% blank page
+
+% --- Page 3 ---
+\begin{example}\label{ex:modules}
+    \begin{enumerate}
+        \item Vector space $\mathbb{C}$ Ring over module is a field.
+
+        \item $(V, T)$ where $V$ is a vector space and $T$ is a linear transform. Ring is constructed to be $F[x]$ where
+        \[
+        f(x) \cdot v := f(T)(v).
+        \]
+        Note: $(V, T) \longmapsto F[x]$ module.
+
+        For $\longmapsto$ we define $T(x) := x \cdot v$.
+    \end{enumerate}
+\end{example}
+
+% --- Page 4 ---
+\begin{itemize}
+    \item \textbf{Vector subspaces}
+
+    \item In $\mathbb{Z}$-modules say $M$
+    \begin{definition}\label{def:submodule_z}
+        $N$ is a submodule iff $(N, +) \leq (CM, +)$.
+    \end{definition}
+
+    \item In $R$ is a $R$-module
+    \begin{definition}\label{def:submodule_ring}
+        $N$ is a submodule iff $N$ is an ideal.
+    \end{definition}
+
+    \item If $M$ is a $F[x]$-module $\cong (V, T)$
+    \begin{definition}\label{def:submodule_fx}
+        $W$ is a submodule iff $T(CW) \subseteq W$, i.e. $W$ is invariant under $T$.
+    \end{definition}
+\end{itemize}
+
+% --- Page 5 ---
+\begin{center}
+\textbf{Finitely generated and cyclic modules}
+\end{center}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Module} & \textbf{f.g.} & \textbf{cyclic} \\ \hline
+$(V, \mathbb{F})$ & $\dim V < \infty$ & $\dim V = \{0, 1\}$ \\ \hline
+$G$ is abelian group treated like $\mathbb{Z}$-module & f.g. as group & cyclic as group \\ \hline
+$R$ comm ring and $M \triangleleft R$, $M$ is $R$-module & f.g. as an ideal & principal ideal \\ \hline
+\end{tabular}
+
+% --- Page 6 ---
+\begin{itemize}
+    \item \textbf{Module homomorphisms}
+
+    \begin{itemize}
+        \item Abelian groups $\leftrightarrow$ $\mathbb{Z}$-modules, then group homomorphism $\leftrightarrow$ module homomorphism.
+    \end{itemize}
+
+    \begin{itemize}
+        \item For vector fields, linear transformation $\leftrightarrow$ module homomorphism.
+    \end{itemize}
+
+    \begin{itemize}
+        \item For ring $R$, $\Theta: M \rightarrow N$ where $M = N = R$ and $\Theta(rs) = r\Theta(s)$ is \textbf{not} a ring homomorphism but is a module homomorphism.
+    \end{itemize}
+
+    \item Isomorphism theorems hold for modules.
+\end{itemize}
+
+% --- Page 7 ---
+% blank page
+
+\end{document}
